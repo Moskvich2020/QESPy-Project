@@ -1,5 +1,5 @@
 # QuadraticEquationSolverPyAlpha1 [build 25102023]
-
+Приветствую Вас, Константин Александрович!
 print()
 print('-------------------------------------------------------------------')
 print(' Добро пожаловать в QuadraticEquationSolverPyAlpha1!')
