@@ -1,2 +1,2 @@
-# QESPy-Project
+# QESPy Project
 Program for solving quadratic equations.
