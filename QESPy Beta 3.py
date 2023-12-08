@@ -343,7 +343,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида ax²+bx+c=0.')
-                    print('   Дискриминант = discriminant.')
+                    print(f'   Дискриминант = {discriminant}.')
                     print(f'   Ответ: x1= {solution_x1};')
                     print(f'          x2= {solution_x2}.')
                     print('   ──────────')
