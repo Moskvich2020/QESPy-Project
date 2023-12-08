@@ -11,7 +11,7 @@ def main(): # main
     print('(c) Moskvich2020 (QESPy Project). Все права защищены.')
     print()
     time.sleep(0.5)
-    print('X:\\QESPy-Project\\3.0.1b\\User>')
+    print('X:\\QESPy-Project\\3.0.4b\\User>')
     time.sleep(1)
     main_menu()
 
