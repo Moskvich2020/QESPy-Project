@@ -1,4 +1,4 @@
-# QESPy Beta 3 [build 08122023]
+# QESPy Beta 3 [build 09122023]
 
 import os
 import time
@@ -7,11 +7,11 @@ clear = lambda: os.system('cls')
 
 def main(): # main
     clear()
-    print('Quadratic Equation Solver in Python [Version 3.0.4b]')
+    print('Quadratic Equation Solver in Python [Version 3.0.5b]')
     print('(c) Moskvich2020 (QESPy Project). Все права защищены.')
     print()
     time.sleep(0.5)
-    print('X:\\QESPy-Project\\3.0.4b\\User>')
+    print('X:\\QESPy-Project\\3.0.5b\\User>')
     time.sleep(1)
     main_menu()
 
@@ -72,7 +72,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                 print()
                 print('   ──────────')
                 print('   Принято уравнение вида bx+c=0.')
-                print(f'   Ответ: x= {solution_x}.')
+                print(f'   Ответ: x= {solution_x:.3f}.')
                 print('   ──────────')
                 print()
                 time.sleep(1)
@@ -82,7 +82,6 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                         print()
                         break
                     elif cmd == 'e':
-                        clear()
                         main_menu()
                     else:
                         print()
@@ -95,8 +94,8 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида ax²+c=0.')
-                    print(f'   Ответ: x1= {solution_x1};')
-                    print(f'          x2= {solution_x2}.')
+                    print(f'   Ответ: x1= {solution_x1:.3f};')
+                    print(f'          x2= {solution_x2:.3f}.')
                     print('   ──────────')
                     print()
                     time.sleep(1)
@@ -106,7 +105,6 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
@@ -117,7 +115,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида ax²+c=0.')
-                    print(f'   Ответ: x= {solution_x}.')
+                    print(f'   Ответ: x= {solution_x:.0f}.')
                     print('   ──────────')
                     print()
                     time.sleep(1)
@@ -127,7 +125,6 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
@@ -147,7 +144,6 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
@@ -159,8 +155,8 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                 print()
                 print('   ──────────')
                 print('   Принято уравнение вида ax²+bx=0.')
-                print(f'   Ответ: x1= {solution_x1};')
-                print(f'          x2= {solution_x2}.')
+                print(f'   Ответ: x1= {solution_x1:.3f};')
+                print(f'          x2= {solution_x2:.3f}.')
                 print('   ──────────')
                 print()
                 time.sleep(1)
@@ -170,7 +166,6 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                         print()
                         break
                     elif cmd == 'e':
-                        clear()
                         main_menu()
                     else:
                         print()
@@ -182,16 +177,15 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида c=0.')
-                    print(f'   Ответ: x= {solution_x}.')
+                    print(f'   Ответ: x= {solution_x:.0f}.')
                     print('   ──────────')
                     print()
                 else:
-                    solution_x = None
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида c=0.')
-                    print('   Ошибка! Данное выражение не имеет смысла.')
-                    print('   Ответ: x!=0.')
+                    print(f'   Ошибка! "{coefficient_c:.0f}=0". Данное выражение не имеет смысла.')
+                    print('   Ответ: ∅.')
                     print('   ──────────')
                     print()
                 time.sleep(1)
@@ -201,7 +195,6 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                         print()
                         break
                     elif cmd == 'e':
-                        clear()
                         main_menu()
                     else:
                         print()
@@ -212,7 +205,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                 print()
                 print('   ──────────')
                 print('   Принято уравнение вида bx=0.')
-                print(f'   Ответ: x= {solution_x}.')
+                print(f'   Ответ: x= {solution_x:.0f}.')
                 print('   ──────────')
                 print()
                 time.sleep(1)
@@ -222,7 +215,6 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                         print()
                         break
                     elif cmd == 'e':
-                        clear()
                         main_menu()
                     else:
                         print()
@@ -233,7 +225,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                 print()
                 print('   ──────────')
                 print('   Принято уравнение вида ax²=0.')
-                print(f'   Ответ: x= {solution_x}.')
+                print(f'   Ответ: x= {solution_x:.0f}.')
                 print('   ──────────')
                 print()                
                 time.sleep(1)
@@ -243,18 +235,16 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                         print()
                         break
                     elif cmd == 'e':
-                        clear()
                         main_menu()
                     else:
                         print()
                         print('Команда не корректна или не существует!')
                         print()
             elif not coefficient_a and not coefficient_b and not coefficient_c: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > a и b и c = 0
-                solution_x = 0
                 print()
                 print('   ──────────')
                 print('   Принято уравнение вида 0=0.')
-                print(f'   Ответ: x= {solution_x}.')
+                print('   Ответ: x может быть любым числом.')
                 print('   ──────────')
                 print()
                 time.sleep(1)
@@ -264,21 +254,22 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                         print()
                         break
                     elif cmd == 'e':
-                        clear()
                         main_menu()
                     else:
                         print()
                         print('Команда не корректна или не существует!')
                         print()
             elif coefficient_a == 1 and coefficient_b != 0 and coefficient_c != 0: # Главное меню > Решение квадратного уравнения (x²+px+q=0) > a = 1
-                if ((coefficient_b**2)/4) - coefficient_c > 0:
+                reduced_discriminant = ((coefficient_b**2)/4) - coefficient_c
+                if reduced_discriminant > 0:
                     solution_x1 = -(coefficient_b/2) - (((coefficient_b**2)/4) - coefficient_c)**(1/2)
                     solution_x2 = -(coefficient_b/2) + (((coefficient_b**2)/4) - coefficient_c)**(1/2)
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида x²+px+q=0.')
-                    print(f'   Ответ: x1= {solution_x1};')
-                    print(f'          x2= {solution_x2}.')
+                    print(f'   Приведённый дискриминант = {reduced_discriminant:.3f}.')
+                    print(f'   Ответ: x1= {solution_x1:.3f};')
+                    print(f'          x2= {solution_x2:.3f}.')
                     print('   ──────────')
                     print()
                     time.sleep(1)
@@ -288,18 +279,18 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
                             print('Команда не корректна или не существует!')
                             print()
-                elif not ((coefficient_b**2)/4) - coefficient_c:
-                    solution_x = -(coefficient_b/2)
+                elif not reduced_discriminant:
+                    solution_x = -(coefficient_b/2) - (((coefficient_b**2)/4) - coefficient_c)**(1/2)
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида x²+px+q=0.')
-                    print(f'   Ответ: x= {solution_x}')
+                    print('   Приведённый дискриминант = 0.')
+                    print(f'   Ответ: x= {solution_x:.3f}')
                     print('   ──────────')
                     print()
                     time.sleep(1)
@@ -309,7 +300,6 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
@@ -319,6 +309,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида x²+px+q=0.')
+                    print(f'   Приведённый дискриминант = {reduced_discriminant:.3f}.')
                     print('   Уравнение не имеет решений!')
                     print('   ──────────')
                     print()
@@ -329,7 +320,6 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
@@ -343,9 +333,9 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида ax²+bx+c=0.')
-                    print(f'   Дискриминант = {discriminant}.')
-                    print(f'   Ответ: x1= {solution_x1};')
-                    print(f'          x2= {solution_x2}.')
+                    print(f'   Дискриминант = {discriminant:.3f}.')
+                    print(f'   Ответ: x1= {solution_x1:.3f};')
+                    print(f'          x2= {solution_x2:.3f}.')
                     print('   ──────────')
                     print()
                     time.sleep(1)
@@ -355,19 +345,18 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
                             print('Команда не корректна или не существует!')
                             print()
                 elif not discriminant:
-                    solution_x = (-coefficient_b) / (2*coefficient_a)
+                    solution_x = -((coefficient_b) / (2*coefficient_a))
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида ax²+bx+c=0.')
-                    print(f'   Дискриминант = {discriminant}.')
-                    print(f'   Ответ: x= {solution_x}.')
+                    print(f'   Дискриминант = 0.')
+                    print(f'   Ответ: x= {solution_x:.3f}.')
                     print('   ──────────')
                     time.sleep(1)
                     while True:
@@ -376,7 +365,6 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
@@ -386,7 +374,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида ax²+bx+c=0.')
-                    print(f'   Дискриминант = {discriminant}.')
+                    print(f'   Дискриминант = {discriminant:.3f}.')
                     print('   Уравнение не имеет решений!')
                     print('   ──────────')
                     print()
@@ -397,7 +385,6 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
@@ -405,7 +392,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                             print()
             else:
                 print()
-                print('Произошла неизвесная синтаксическая/логическая ошибка.')
+                print('Внимание! Произошла неизвесная синтаксическая/логическая ошибка.')
                 print()
                 time.sleep(1)
                 while True:
@@ -446,9 +433,9 @@ def solution_of_biquadratic_equation(): # Главное меню > Решени
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида ax⁴+bx²+c=0.')
-                    print(f'   Дискриминант = {discriminant_biq}.')
-                    print(f'   Ответ: x1= {solution_biq_x1};')
-                    print(f'          x2= {solution_biq_x2}.')
+                    print(f'   Дискриминант = {discriminant_biq:.3f}.')
+                    print(f'   Ответ: x1= {solution_biq_x1:.3f};')
+                    print(f'          x2= {solution_biq_x2:.3f}.')
                     print('   ──────────')
                     print()
                     time.sleep(1)
@@ -458,7 +445,6 @@ def solution_of_biquadratic_equation(): # Главное меню > Решени
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
@@ -469,8 +455,8 @@ def solution_of_biquadratic_equation(): # Главное меню > Решени
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида ax⁴+bx²+c=0.')
-                    print(f'   Дискриминант = {discriminant_biq}.')
-                    print(f'   Ответ: x= {solution_biq_x}.')
+                    print(f'   Дискриминант = {discriminant_biq:.3f}.')
+                    print(f'   Ответ: x= {solution_biq_x:.3f}.')
                     print('   ──────────')
                     time.sleep(1)
                     while True:
@@ -479,7 +465,6 @@ def solution_of_biquadratic_equation(): # Главное меню > Решени
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
@@ -489,7 +474,7 @@ def solution_of_biquadratic_equation(): # Главное меню > Решени
                     print()
                     print('   ──────────')
                     print('   Принято уравнение вида ax⁴+bx²+c=0.')
-                    print(f'   Дискриминант = {discriminant_biq}.')
+                    print(f'   Дискриминант = {discriminant_biq:.3f}.')
                     print('   Уравнение не имеет решений!')
                     print('   ──────────')
                     print()
@@ -500,7 +485,6 @@ def solution_of_biquadratic_equation(): # Главное меню > Решени
                             print()
                             break
                         elif cmd == 'e':
-                            clear()
                             main_menu()
                         else:
                             print()
@@ -518,7 +502,6 @@ def solution_of_biquadratic_equation(): # Главное меню > Решени
                         print()
                         break
                     elif cmd == 'e':
-                        clear()
                         main_menu()
                     else:
                         print()
@@ -675,8 +658,8 @@ def about_the_program(): # Главное меню > О программе
     print('   Имя программы:           QESPy                                                                                      ')
     print('   Полное имя программы:    Quadratic Equation Solver in Python                                                        ')
     print('   Версия:                  Beta 3                                                                                     ')
-    print('   Полная версия:           v3.0.4b                                                                                    ')
-    print('   Номер сборки:            08122023                                                                                   ')
+    print('   Полная версия:           v3.0.5b                                                                                    ')
+    print('   Номер сборки:            09122023                                                                                   ')
     print('   Оболочка:                Отсутствует                                                                                ')
     print('   Ядро:                    IPython                                                                                    ')
     print('   Исполнитель:             Python3                                                                                    ')
