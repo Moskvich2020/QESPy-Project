@@ -1,5 +1,5 @@
 # ╭─────────────────────────────────╮
-# │ QESPy Beta 3.1 [build 23122023] │ 
+# │ QESPy Beta 3.1 [build 24122023] │ 
 # ╰─────────────────────────────────╯
 
 import os
@@ -11,7 +11,7 @@ clear = lambda: os.system('cls')
 
 def main(): # main
     clear()
-    print('Quadratic Equation Solver in Python [Version 3.1.5b]')
+    print('Quadratic Equation Solver in Python [Version 3.1.6b]')
     print('(c) Moskvich2020 (QESPy Project). Все права защищены.')
     print()
     time.sleep(0.5)
@@ -804,7 +804,7 @@ def expansion_of_a_quadratic_equation(): # Главное меню > Разло�
                             print()
                             print('Команда некорректна или не существует!')
                             print()
-                if not discriminant:
+                elif not discriminant:
                     solution_x = -((coefficient_b) / (2*coefficient_a))
 
                     x_ans_1 = f'x - {solution_x:.2f})' if solution_x > 0 else f'x + {solution_x:.2f})'
@@ -1030,11 +1030,11 @@ def license(): # Главное меню > Справка > Лицензия
 
 def terminal(): # Главное меню > Терминал
     clear()
-    print('Quadratic Equation Solver in Python [Version 3.1.5b]')
+    print('Quadratic Equation Solver in Python [Version 3.1.6b]')
     print('(c) Moskvich2020 (QESPy Project). Все права защищены.')
     while True:
         print()
-        cmd = input('QESPy\\3.1.5b\\User>').lower()
+        cmd = input('QESPy\\3.1.6b\\User>').lower()
         if cmd == 'exit': # TUI
             main_menu()
         elif cmd == 'help': # Console
@@ -1099,8 +1099,8 @@ def about_the_program(): # Главное меню > О программе
     print('   Имя программы:           QESPy                                                                                      ')
     print('   Полное имя программы:    Quadratic Equation Solver in Python                                                        ')
     print('   Версия:                  Beta 3.1                                                                                   ')
-    print('   Полная версия:           v3.1.5b                                                                                    ')
-    print('   Номер сборки:            23122023                                                                                   ')
+    print('   Полная версия:           v3.1.6b                                                                                    ')
+    print('   Номер сборки:            24122023                                                                                   ')
     print('   Оболочка:                Отсутствует                                                                                ')
     print('   Ядро:                    IPython                                                                                    ')
     print('   Исполнитель:             Python3                                                                                    ')
