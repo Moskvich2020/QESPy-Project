@@ -1,4 +1,4 @@
-# QESPy Project
+![Logo](https://github.com/Moskvich2020/QESPy-Project/blob/Develop/Images/Banerpng.png)
 
 ## О программе
 
