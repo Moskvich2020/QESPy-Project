@@ -69,7 +69,7 @@
 
 ## Разработчики
 
-- [Constantin (Moskvich2020)]((https://github.com/Moskvich2020))
+- [Constantin (Moskvich2020)](https://github.com/Moskvich2020)
 - [Anton (AntonS2000)](https://github.com/AntonS2000)
 
 ## Лицензия
