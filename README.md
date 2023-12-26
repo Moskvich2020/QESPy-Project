@@ -64,7 +64,7 @@
 
 ## Дистрибутивы
 
-- [QESPy Project - Официальный сайт](qespy-project.free.nf)
+- [QESPy Project - Официальный сайт](http://qespy-project.free.nf/)
 
 
 ## Разработчики
