@@ -10,7 +10,7 @@ class App(customtkinter.CTk):
         self.geometry("1366x768")
 
         # Установка макета сетки 1x2
-        self.grid_rowconfigure(1, weight=1)
+        self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
 
         # Подгрузка изображений (для светлой и тёмной тем)
