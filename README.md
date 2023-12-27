@@ -76,7 +76,7 @@
 
 BSD 3-Clause License
 
-Copyright (c) 2023-2024, [Cristi constantin (Moskvich2020)](https://github.com/Moskvich2020)
+Copyright (c) 2023-2024, [Cristi Constantin (Moskvich2020)](https://github.com/Moskvich2020)
 
 Распространение и использование в исходной и бинарной форме, с модификациями или без них, разрешено при соблюдении следующих условий:
 
