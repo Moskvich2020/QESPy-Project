@@ -1,4 +1,4 @@
-![QESPy Project - Baner](https://github.com/Moskvich2020/QESPy-Project/blob/Master/Images/QESPy%20Project%20-%20Baner.png)
+![QESPy Project - Light Baner](https://github.com/Moskvich2020/QESPy-Project/blob/Master/Images/QESPy%20Project%20-%20Light%20Baner.png)
 
 
 ## О проекте
