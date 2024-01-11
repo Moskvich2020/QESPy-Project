@@ -340,9 +340,12 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     main_menu()
                 else:
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
-        else: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx+c=0 | a и b и c != 0 
+        if abs(coefficient_a) == 1 and coefficient_b != 0 and coefficient_c != 0: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > x²+px+q=0 | a = 1, b и c ≠ 0 
+            pass
+        else: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx+c=0 | a и b и c ≠ 0 
             discriminant = coefficient_b**2 - 4*coefficient_a*coefficient_c
 
+            # Todo: исправить форматирование коэффициентов!
             coef_a_str = f'{coefficient_a}x²' if abs(coefficient_a) != 1 else ('x²' if coefficient_a == 1 else '-x²')
             coef_b_str = f' + {coefficient_b}x' if abs(coefficient_b) != 1 and coefficient_b > 0 else (f' - {-coefficient_b}x' if abs(coefficient_b) != 1 and coefficient_b < 0 else(' + x' if coefficient_b == 1 else ' - x'))
             coef_c_str = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
