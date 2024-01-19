@@ -1,5 +1,5 @@
 # ╭─────────────────────────────────╮
-# │ QESPy Beta 3.2 [build 11012024] │ 
+# │ QESPy Beta 3.2 [build 19012024] │ 
 # ╰─────────────────────────────────╯
 
 import os
@@ -341,18 +341,106 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                 else:
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
         if abs(coefficient_a) == 1 and coefficient_b != 0 and coefficient_c != 0: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > x²+px+q=0 | a = 1, b и c ≠ 0 
-            pass
+            reduced_discriminant = coefficient_b**2 / 4 - coefficient_c
+
+            x_str = 'x²' if coefficient_a > 0 else '-x²'
+            coef_p_str = f' + {coefficient_b}x' if abs(coefficient_b) != 1 and coefficient_b > 0 else (f' - {-coefficient_b}x' if abs(coefficient_b) != 1 and coefficient_b < 0 else(' + x' if coefficient_b == 1 else ' - x'))
+            coef_q_str = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
+            coef_p_red_dis = f'{coefficient_b}' if coefficient_b > 0 else f'({coefficient_b})'
+            coef_q_red_dis = f' - {coefficient_c}' if coefficient_c > 0 else f' + {-coefficient_c}'
+            coef_p_sol = f'{coefficient_b}' if coefficient_b > 0 else f'({coefficient_b})'
+            coef_q_sol = f' - {coefficient_c}' if coefficient_c > 0 else f' + {-coefficient_c}'
+
+            if reduced_discriminant > 0:
+                solution_x1 = -coefficient_b / 2 + (coefficient_b**2 / 4 - coefficient_c)**(1/2)
+                solution_x2 = -coefficient_b / 2 - (coefficient_b**2 / 4 - coefficient_c)**(1/2)
+                print()
+                print('   ───────────────────────────────────')
+                print('   Принято уравнение вида x²+px+q=0   ')
+                print('   ───────────────────────────────────')
+                print(f'   Дано:      {x_str}{coef_p_str}{coef_q_str} = 0')
+                print(f'   Решение:   D = {coef_p_red_dis}² / 4{coef_q_red_dis}')
+                print(f'              D = {coefficient_b**2:.2f} / 4{coef_q_red_dis}')
+                print(f'              D = {coefficient_b**2 / 4:.2f}{coef_q_red_dis}')
+                print(f'              D = {reduced_discriminant:.2f}')
+                print(f'              x = -({coefficient_b} / 2) ± √({coef_p_sol}² / 4{coef_q_sol})')
+                print(f'              x = {-coefficient_b / 2:.2f} ± √({coefficient_b**2:.2f} / 4{coef_q_sol})')
+                print(f'              x = {-coefficient_b / 2:.2f} ± √({coefficient_b**2 / 4:.2f}{coef_q_sol})')
+                print(f'              x = {-coefficient_b / 2:.2f} ± √{reduced_discriminant}')
+                print(f'   Ответ:     x₁ = {solution_x1:.2f}')
+                print(f'              x₂ = {solution_x2:.2f}')
+                print('   ───────────────────────────────────')
+                print()
+                sleep(1)
+                while True:
+                    print('[N] Продолжить, [E] Выход')
+                    pressed_key = getch().lower()
+                    if ord(pressed_key) == ord('n'):
+                        print()
+                        break
+                    elif ord(pressed_key) == ord('e'):
+                        main_menu()
+                    else:
+                        console.print('\n[red]Команда некорректна или не существует![/]\n')
+            elif not reduced_discriminant:
+                solution_x = -coefficient_b / 2
+                print()
+                print('   ───────────────────────────────────')
+                print('   Принято уравнение вида x²+px+q=0   ')
+                print('   ───────────────────────────────────')
+                print(f'   Дано:      {x_str}{coef_p_str}{coef_q_str} = 0')
+                print(f'   Решение:   D = {coef_p_red_dis}² / 4{coef_q_red_dis}')
+                print(f'              D = {coefficient_b**2:.2f} / 4{coef_q_red_dis}')
+                print(f'              D = {coefficient_b**2 / 4:.2f}{coef_q_red_dis}')
+                print(f'              D = {reduced_discriminant:.2f}')
+                print(f'              x = -({coefficient_b} / 2)')
+                print(f'   Ответ:     x = {solution_x:.2f}')
+                print('   ───────────────────────────────────')
+                sleep(1)
+                while True:
+                    print('[N] Продолжить, [E] Выход')
+                    pressed_key = getch().lower()
+                    if ord(pressed_key) == ord('n'):
+                        print()
+                        break
+                    elif ord(pressed_key) == ord('e'):
+                        main_menu()
+                    else:
+                        console.print('\n[red]Команда некорректна или не существует![/]\n')
+            else:
+                print()
+                print('   ───────────────────────────────────')
+                print('   Принято уравнение вида x²+px+q=0   ')
+                print('   ───────────────────────────────────')
+                print(f'   Дано:      {x_str}{coef_p_str}{coef_q_str} = 0')
+                print(f'   Решение:   D = {coef_p_red_dis}² / 4{coef_q_red_dis}')
+                print(f'              D = {coefficient_b**2:.2f} / 4{coef_q_red_dis}')
+                print(f'              D = {coefficient_b**2 / 4:.2f}{coef_q_red_dis}')
+                print(f'              D = {reduced_discriminant:.2f}')
+                print('   Ответ:     Уравнение не имеет решений!')
+                print('   ───────────────────────────────────')
+                print()
+                sleep(1)
+                while True:
+                    print('[N] Продолжить, [E] Выход')
+                    pressed_key = getch().lower()
+                    if ord(pressed_key) == ord('n'):
+                        print()
+                        break
+                    elif ord(pressed_key) == ord('e'):
+                        main_menu()
+                    else:
+                        console.print('\n[red]Команда некорректна или не существует![/]\n')
         else: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx+c=0 | a и b и c ≠ 0 
             discriminant = coefficient_b**2 - 4*coefficient_a*coefficient_c
 
-            # Todo: исправить форматирование коэффициентов!
-            coef_a_str = f'{coefficient_a}x²' if abs(coefficient_a) != 1 else ('x²' if coefficient_a == 1 else '-x²')
+            coef_a_str = f'{coefficient_a}x²'
             coef_b_str = f' + {coefficient_b}x' if abs(coefficient_b) != 1 and coefficient_b > 0 else (f' - {-coefficient_b}x' if abs(coefficient_b) != 1 and coefficient_b < 0 else(' + x' if coefficient_b == 1 else ' - x'))
             coef_c_str = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
             coef_a_dis = f'{coefficient_a}' if coefficient_a > 0 else f'({coefficient_a})'
             coef_b_dis = f'{coefficient_b}' if coefficient_b > 0 else f'({coefficient_b})'
             coef_c_dis = f'{coefficient_c}' if coefficient_c > 0 else f'({coefficient_c})'
-            a_c_dis = f' - {4*coefficient_a*coefficient_c:.2f}' if 4*coefficient_a*coefficient_c > 0 else f' + {abs(4*coefficient_a*coefficient_c):.2f}'
+            a_c_dis = f' - {4 * coefficient_a * coefficient_c:.2f}' if 4 * coefficient_a * coefficient_c > 0 else f' + {abs(4*coefficient_a*coefficient_c):.2f}'
             coef_a_sol = f'{coefficient_a}' if coefficient_a > 0 else f'({coefficient_a})'
             coef_b_sol_1 = f'(-{coefficient_b}' if coefficient_b > 0 else f'(-({coefficient_b})'
             coef_b_sol_2 = f'(-{coefficient_b}' if coefficient_b > 0 else f'({-coefficient_b}'
