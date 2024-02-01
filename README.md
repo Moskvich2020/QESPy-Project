@@ -26,6 +26,7 @@ QESPy Project прекрасно сочетает в себе все необх�
 
 ## Документация
  
+- [QESPy Beta 3.1](https://github.com/Moskvich2020/QESPy-Project/blob/Develop/Documentation%20(RU)/QESPy%20Beta%203.1%20-%20Doc.md)
 
 ## Дистрибутивы
 
