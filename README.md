@@ -1,5 +1,4 @@
 ![QESPy Project - Light Baner](https://github.com/Moskvich2020/QESPy-Project/blob/Master/Images/QESPy%20Project%20-%20Light%20Baner.png)
-
 <p align="center">
   <img src="https://img.shields.io/badge/Python-v3.12-yellow?style=flat&logo=python&logoColor=yellow" alt="Python Version">
   <img src="https://img.shields.io/badge/%D0%92%D0%B5%D1%80%D1%81%D0%B8%D1%8F-v.3.2.4b%20(Beta)-blue?style=flat" alt="Version">
