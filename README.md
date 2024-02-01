@@ -1,7 +1,9 @@
 ![QESPy Project - Light Baner](https://github.com/Moskvich2020/QESPy-Project/blob/Master/Images/QESPy%20Project%20-%20Light%20Baner.png)
+
 <p align="center">
   <img src="https://img.shields.io/badge/Python-v3.12-yellow?style=flat&logo=python&logoColor=yellow" alt="Python Version">
-  <img src="https://img.shields.io/badge/%D0%92%D0%B5%D1%80%D1%81%D0%B8%D1%8F-v.3.2.4b%20(Beta)-blue?style=flat" alt="Version">
+  <img src="https://img.shields.io/badge/QESPy%20Desktop-v3.2.4b%20(Beta)-blue?style=flat" alt="QESPy Desktop Version">
+  <img src="https://img.shields.io/badge/Windows-blue?style=flat&logo=windows" alt="OS">
   <img src="https://img.shields.io/badge/%D0%9B%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F-BSD%203--Clause%20License-gren?style=flat" alt="License">
 </p>
 
