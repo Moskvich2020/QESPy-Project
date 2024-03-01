@@ -1,7 +1,7 @@
 import os
 import sys
 from msvcrt import getch
-from time import sleep
+# from time import sleep
 
 from rich.console import Console
 from rich.panel import Panel
