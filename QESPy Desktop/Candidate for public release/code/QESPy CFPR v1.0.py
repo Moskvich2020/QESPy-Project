@@ -1,11 +1,12 @@
-# ╭─────────────────────────────────╮
-# │ Name: QESPy CFPR                │ 
-# │ Version: 1.0                    │ 
-# │ Build: 01032024                 │ 
-# │ Build Date: 01-03-2024 9:00 PM  │ 
-# │ Author: Moskvich2020            │ 
-# │ License: BSD 3-Clause License   │ 
-# ╰─────────────────────────────────╯
+
+#* ╭─────────────────────────────────╮
+#* │ Name: QESPy CFPR                │ 
+#* │ Version: 1.0                    │ 
+#* │ Build: 01032024                 │ 
+#* │ Build Date: 01-03-2024 9:00 PM  │ 
+#* │ Author: Moskvich2020            │ 
+#* │ License: BSD 3-Clause License   │ 
+#* ╰─────────────────────────────────╯
 
 import os
 import sys
@@ -22,7 +23,7 @@ clear = lambda: os.system('cls')
 # os.system('mode 125, 30')
 
 
-def main(): # main
+def main(): #* main
     clear()
     print('Quadratic Equation Solver in Python CFPR [Version 1.0]')
     print('(c) Cristi Constantin (Moskvich2020) QESPy Project. Все права защищены.')
@@ -30,7 +31,7 @@ def main(): # main
     main_menu()
 
 
-def main_menu(): # Главное меню
+def main_menu(): #* Главное меню
     clear()
     main_menu_title_panel = Panel(
         Text(
@@ -49,7 +50,8 @@ def main_menu(): # Главное меню
 [3]    Решение биквадратного уравнения (ax⁴+bx²+c=0)
 [4]    Разложение квадратного уравнения (ax²+bx+c=a(x-x₁)(x-x₂))
 [5]    Терминал
-[6]    Справка
+[6]    Настройки
+[7]    Справка
 [E]    Выйти из программы
             '''
         ),
@@ -82,9 +84,11 @@ def main_menu(): # Главное меню
             console.print('\n[red]Команда некорректна или не существует![/]\n')
 
 
-def solving_a_quadratic_equation(): # Главное меню > Решение квадратного уравнения (ax²+bx+c=0)
+def solving_a_quadratic_equation(): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0)
     clear()
+
     console.print(Panel(Text(text='Решение квадратного уравнения (ax²+bx+c=0)', justify='center'), title='Опция №1'))
+    
     while True:
         while True:
             coefficient_a = input('   Введите коэффициент a: ')
@@ -123,7 +127,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                 console.print('\n[red]Ошибка! Коэффициент c не является числом! Введите, пожалуйста, ещё раз число![/]')
                 console.print('[red]Примечание: старайтесь использовать целочисленные коэффициенты с не более чем двумя цифрами после запятой и со значением не более 1000. Обязательно разделяйте целую часть числа от дробной точкой (".").[/]\n')
 
-        if not coefficient_a and coefficient_b != 0 and coefficient_c != 0: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > bx+c=0 | a = 0
+        if not coefficient_a and coefficient_b != 0 and coefficient_c != 0: #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > bx+c=0 | a = 0
             solution_x = -(coefficient_c/coefficient_b)
 
             coef_b_str = f'{coefficient_b}x' if abs(coefficient_b) != 1 else ('x' if coefficient_b == 1 else '-x')
@@ -161,7 +165,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     main_menu()
                 else:
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
-        elif coefficient_a != 0 and not coefficient_b and coefficient_c != 0: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+c=0 | b = 0
+        elif coefficient_a != 0 and not coefficient_b and coefficient_c != 0: #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+c=0 | b = 0
             if (coefficient_c/coefficient_a) < 0:
                 solution_x1 = (-(coefficient_c/coefficient_a))**(1/2)
                 solution_x2 = -(-(coefficient_c/coefficient_a))**(1/2)
@@ -220,7 +224,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                         main_menu()
                     else:
                         console.print('\n[red]Команда некорректна или не существует![/]\n')
-        elif coefficient_a != 0 and coefficient_b != 0 and not coefficient_c: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx=0 | c = 0
+        elif coefficient_a != 0 and coefficient_b != 0 and not coefficient_c: #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx=0 | c = 0
             solution_x1 = 0
             solution_x2 = -(coefficient_b/coefficient_a)
 
@@ -260,7 +264,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     main_menu()
                 else:
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
-        elif not coefficient_a and not coefficient_b and coefficient_c != 0: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > c=0 | a и b = 0
+        elif not coefficient_a and not coefficient_b and coefficient_c != 0: #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > c=0 | a и b = 0
             print()
             print('   ───────────────────────────────────')
             print('   Принято уравнение вида c=0         ')
@@ -280,7 +284,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     main_menu()
                 else:
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
-        elif not coefficient_a and coefficient_b != 0 and not coefficient_c: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > bx=0 | a и c = 0
+        elif not coefficient_a and coefficient_b != 0 and not coefficient_c: #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > bx=0 | a и c = 0
             solution_x = 0
             print()
             print('   ───────────────────────────────────')
@@ -302,7 +306,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     main_menu()
                 else:
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
-        elif coefficient_a != 0 and not coefficient_b and not coefficient_c: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²=0 | b и c = 0
+        elif coefficient_a != 0 and not coefficient_b and not coefficient_c: #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²=0 | b и c = 0
             solution_x1 = 0
             solution_x2 = 0
             print()
@@ -327,7 +331,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     main_menu()
                 else:
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
-        elif not coefficient_a and not coefficient_b and not coefficient_c: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > 0=0 | a и b и c = 0
+        elif not coefficient_a and not coefficient_b and not coefficient_c: #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > 0=0 | a и b и c = 0
             print()
             print('   ───────────────────────────────────')
             print('   Принято уравнение вида 0=0         ')
@@ -348,7 +352,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                     main_menu()
                 else:
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
-        if abs(coefficient_a) == 1 and coefficient_b != 0 and coefficient_c != 0: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > x²+px+q=0 | a = 1, b и c ≠ 0 
+        elif abs(coefficient_a) == 1 and coefficient_b != 0 and coefficient_c != 0: #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > x²+px+q=0 | a = 1, b и c ≠ 0 
             reduced_discriminant = coefficient_b**2 / 4 - coefficient_c
 
             x_str = 'x²' if coefficient_a > 0 else '-x²'
@@ -439,7 +443,7 @@ def solving_a_quadratic_equation(): # Главное меню > Решение �
                         main_menu()
                     else:
                         console.print('\n[red]Команда некорректна или не существует![/]\n')
-        else: # Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx+c=0 | a и b и c ≠ 0 
+        else: #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx+c=0 | a и b и c ≠ 0 
             discriminant = coefficient_b**2 - 4*coefficient_a*coefficient_c
 
             coef_a_str = f'{coefficient_a}x²'

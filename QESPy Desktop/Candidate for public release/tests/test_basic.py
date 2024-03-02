@@ -1,18 +1,19 @@
 import os
 import sys
+import json
 # from msvcrt import getch
-# from time import sleep
+from time import sleep
 
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
 
-# from reading_coefficients import reading_quadratic_equation_coefficients as rqec
-
 
 console = Console()
 clear = lambda: os.system('cls')
 
-# rqec()
+with open('test_settings.json', 'r') as settings:
+    config = json.load(settings)
 
-
+print(f'thtme {config['theme']}')
+print(f'')
