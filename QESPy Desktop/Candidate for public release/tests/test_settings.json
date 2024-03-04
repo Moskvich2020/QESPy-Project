@@ -1,4 +1,10 @@
 {
     "theme": "white",
-    "sol_mode": "long"
+    "sol_mode": "long",
+    "modes": [
+        "moi drug",
+        "para na hutora",
+        "v dali ot procei seroi heri",
+        "gne net, ebena mati, bacterii"
+    ]
 }
