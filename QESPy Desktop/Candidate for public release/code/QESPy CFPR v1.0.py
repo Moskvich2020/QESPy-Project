@@ -443,7 +443,7 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
                         main_menu()
                     else:
                         console.print('\n[red]Команда некорректна или не существует![/]\n')
-        else: #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx+c=0 | a и b и c ≠ 0 
+        else: #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx+c=0 | a и b и c ≠ 0
             discriminant = coefficient_b**2 - 4*coefficient_a*coefficient_c
 
             coef_a_str = f'{coefficient_a}x²'
