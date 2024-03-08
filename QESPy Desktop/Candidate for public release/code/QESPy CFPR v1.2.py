@@ -2,8 +2,8 @@
 #* ╭─────────────────────────────────╮
 #* │ Name: QESPy CFPR                │ 
 #* │ Version: 1.2                    │ 
-#* │ Build: 07032024                 │ 
-#* │ Build Date: 07-03-2024 9:00 PM  │ 
+#* │ Build: 08032024                 │ 
+#* │ Build Date: 08-03-2024 8:30 PM  │ 
 #* │ Author: Moskvich2020            │ 
 #* │ License: BSD 3-Clause License   │ 
 #* ╰─────────────────────────────────╯
@@ -238,9 +238,10 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         sol_x_str = f'{solution_x}' if isinstance(solution_x, int) == True else f'{solution_x:.2f}'
         coef_b_sol = f'{coefficient_b}x' if abs(coefficient_b) != 1 else ('x' if coefficient_b == 1 else '-x')
         coef_c_sol = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
-        auxiliary_line_sol_1 = f'\n              x = -({coefficient_c} / {coefficient_b})' if coefficient_b > 0 and coefficient_c > 0 else (f'\n              x = {coefficient_c} / {-coefficient_b}' if coefficient_b < 0 and coefficient_c > 0 else ('' if coefficient_b > 0 and coefficient_c < 0 else f'\n              x = -({-coefficient_c} / {-coefficient_b})'))
+        auxiliary_line_sol_1 = f'\n              x = -({coefficient_c} / {coefficient_b})' if coefficient_b > 0 and coefficient_c > 0 else (f'\n              x = {coefficient_c} / {-coefficient_b}' if coefficient_b < 0 and coefficient_c > 0 else (f'\n              x = {-coefficient_c} / {coefficient_b}' if coefficient_b > 0 and coefficient_c < 0 else f'\n              x = -({-coefficient_c} / {-coefficient_b})'))
         auxiliary_line_sol_2 = f'\n              x = {coefficient_c}' if coefficient_b < 0 and coefficient_c > 0 else (f'\n              x = {coefficient_c}' if coefficient_b < 0 and coefficient_c < 0 else '')
-        auxiliary_line_sol = f'x = {-coefficient_c} / {coefficient_b}{auxiliary_line_sol_1}\n' if abs(coefficient_b) != 1 else f'{coef_b_sol} = {-coefficient_c}{auxiliary_line_sol_2}\n'
+        auxiliary_line_sol_3 = f'\n              {coef_b_sol} = {-coefficient_c} | ÷ {coefficient_b}{auxiliary_line_sol_1}' if coefficient_b > 0 else f'\n              {coef_b_sol} = {-coefficient_c} | ÷ ({coefficient_b}){auxiliary_line_sol_1}'
+        auxiliary_line_sol = f'{coef_b_sol} = {-coefficient_c}{auxiliary_line_sol_3}\n' if abs(coefficient_b) != 1 else f'{coef_b_sol} = {-coefficient_c}{auxiliary_line_sol_2}\n'
         sol_x_sol = f'{solution_x}' if isinstance(solution_x, int) == True else f'{solution_x:.2f}'
         
         print()
