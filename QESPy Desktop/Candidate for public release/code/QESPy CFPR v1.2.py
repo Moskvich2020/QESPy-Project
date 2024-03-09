@@ -2,8 +2,8 @@
 #* ╭─────────────────────────────────╮
 #* │ Name: QESPy CFPR                │ 
 #* │ Version: 1.2                    │ 
-#* │ Build: 08032024                 │ 
-#* │ Build Date: 08-03-2024 8:30 PM  │ 
+#* │ Build: 09032024                 │ 
+#* │ Build Date: 09-03-2024 9:00 PM  │ 
 #* │ Author: Moskvich2020            │ 
 #* │ License: BSD 3-Clause License   │ 
 #* ╰─────────────────────────────────╯
@@ -218,31 +218,36 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
             sol_x_str: форматированный корень уравнения для вывода в строке с ответом
             coef_b_sol: форматированный коэффициент b для вывода данных в блоке решения
             coef_c_sol_1: форматированный коэффициент c для вывода данных в блоке решения
-            auxiliary_line_sol_1: вспомогательная строка для вывода данных в блоке решения если модуль коэффициента b ≠ 0
-            auxiliary_line_sol_2: вспомогательная строка для вывода данных в блоке решения если модуль коэффициента b = 0
+            auxiliary_line_sol_1: вспомогательная строка для вывода данных в блоке решения
+            auxiliary_line_sol_2: вспомогательная строка для вывода данных в блоке решения
+            auxiliary_line_sol_3: вспомогательная строка для вывода данных в блоке решения
             auxiliary_line_sol: вспомогательная строка для вывода данных в блоке решения,
-                                определяющая дальнейшее действие в зависимости от модуля коэффициента b
+                                определяющая дальнейшее действие в зависимости от модуля
+                                коэффициента b
             sol_x_sol: вспомогательная строка для вывода ответа в блоке решения
 
         Алгоритм решения:
             bx+c=0
-            bx=-c
-            bx=-c |÷b
-            x=-c/b
+            │└ |b| ≠ 1
+            │  bx=-c
+            │  bx=-c |÷b
+            │  x=-c/b
+            └─ |b| = 1
+                x=-c
 
         '''
         solution_x = -(coefficient_c/coefficient_b)
 
         coef_b_str = f'{coefficient_b}x' if abs(coefficient_b) != 1 else ('x' if coefficient_b == 1 else '-x')
         coef_c_str = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
-        sol_x_str = f'{solution_x}' if isinstance(solution_x, int) == True else f'{solution_x:.2f}'
+        sol_x_str = f'{int(solution_x)}' if solution_x.is_integer() else f'{solution_x:.2f}'
         coef_b_sol = f'{coefficient_b}x' if abs(coefficient_b) != 1 else ('x' if coefficient_b == 1 else '-x')
         coef_c_sol = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
         auxiliary_line_sol_1 = f'\n              x = -({coefficient_c} / {coefficient_b})' if coefficient_b > 0 and coefficient_c > 0 else (f'\n              x = {coefficient_c} / {-coefficient_b}' if coefficient_b < 0 and coefficient_c > 0 else (f'\n              x = {-coefficient_c} / {coefficient_b}' if coefficient_b > 0 and coefficient_c < 0 else f'\n              x = -({-coefficient_c} / {-coefficient_b})'))
         auxiliary_line_sol_2 = f'\n              x = {coefficient_c}' if coefficient_b < 0 and coefficient_c > 0 else (f'\n              x = {coefficient_c}' if coefficient_b < 0 and coefficient_c < 0 else '')
         auxiliary_line_sol_3 = f'\n              {coef_b_sol} = {-coefficient_c} | ÷ {coefficient_b}{auxiliary_line_sol_1}' if coefficient_b > 0 else f'\n              {coef_b_sol} = {-coefficient_c} | ÷ ({coefficient_b}){auxiliary_line_sol_1}'
-        auxiliary_line_sol = f'{coef_b_sol} = {-coefficient_c}{auxiliary_line_sol_3}\n' if abs(coefficient_b) != 1 else f'{coef_b_sol} = {-coefficient_c}{auxiliary_line_sol_2}\n'
-        sol_x_sol = f'{solution_x}' if isinstance(solution_x, int) == True else f'{solution_x:.2f}'
+        auxiliary_line_sol = f'{coef_b_sol} = {-coefficient_c}{auxiliary_line_sol_3}' if abs(coefficient_b) != 1 else f'{coef_b_sol} = {-coefficient_c}{auxiliary_line_sol_2}'
+        sol_x_sol = f'{int(solution_x)}' if solution_x.is_integer() == True else f'{solution_x:.2f}'
         
         print()
         print('   ──────────────────────────────────────────────')
@@ -250,12 +255,12 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         print('   ──────────────────────────────────────────────')
         print(f'   Дано:      {coef_b_str}{coef_c_str} = 0')
         print(f'   Решение:   {coef_b_sol}{coef_c_sol} = 0')
-        print(f'              {auxiliary_line_sol}', end='')
+        print(f'              {auxiliary_line_sol}')
         print(f'              x = {sol_x_sol}')
         print(f'   Ответ:     x = {sol_x_str}')
         print('   ──────────────────────────────────────────────')
         print()
-        console.print('[dim italic]Примечание: данное уравнение не является квадратным, а линейным (первой степени), так как наивысшая степень этого уравнения I.[/]')
+        console.print('[dim italic]Примечание: данное уравнение не является квадратным, а линейным (первой степени), так как наивысшая степень этого уравнения 1.[/]')
         print()
         sleep(1)
         while True:
@@ -270,29 +275,84 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
                 console.print('\n[red]Команда некорректна или не существует![/]\n')
 
     def solving_a_quadratic_equation_2(coefficient_a, coefficient_c): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+c=0 | b = 0
+        '''
+        Функция solving_a_quadratic_equation_2 отвечает за решение неполного
+        квадратного уравнения вида ax²+c=0
+
+        Описание:
+            1. Принимает аргументы.
+            2. Проверяет существуют ли решения.
+            3. Генерирует строки для вывода решения в зависимости от коэффициентов.
+            4. Выводит решение.
+            5. Предлагает продолжить решение или выйти из опции.
+
+        Принимаемые аргументы:
+            coefficient_a: коэффициент a
+            coefficient_c: коэффициент c
+
+        Внутренние переменные:
+            |a| ≠ 1:
+                coef_a_str: форматированный коэффициент a для вывода в строке "Дано"
+                coef_c_str: форматированный коэффициент c для вывода в строке "Дано"
+                sol_x1_str: форматированный корень №1 уравнения для вывода в строке с ответом
+                sol_x2_str: форматированный корень №2 уравнения для вывода в строке с ответом
+                coef_a_sol_1: форматированный коэффициент a для вывода данных в блоке решения
+                coef_c_sol_1: форматированный коэффициент c для вывода данных в блоке решения
+                coef_c_sol_2: форматированный коэффициент c для вывода данных в блоке решения
+                auxiliary_line_sol_1: вспомогательная строка для вывода данных в блоке решения
+                auxiliary_line_sol_2: вспомогательная строка для вывода данных в блоке решения
+                auxiliary_line_sol_3: вспомогательная строка для вывода данных в блоке решения
+                auxiliary_line_sol: вспомогательная строка для вывода данных в блоке решения,
+                                    определяющая дальнейшее действие в зависимости от модуля
+                                    коэффициента a
+                sol_x1_sol: вспомогательная строка для вывода корня №1 в блоке решения
+                sol_x2_sol: вспомогательная строка для вывода корня №2 в блоке решения
+
+            |a| = 1:
+
+        Алгоритм решения:
+            ax²+c=0
+            │└ c/a < 0
+            │  │└ |a| ≠ 1
+            │  │  ax²=-c
+            │  │  ax²=-c | ÷ a
+            │  │  x²=-(c/a)
+            │  │  x=±√(-(c/a))
+            │  └─ |a| = 1
+            │     x²=-c
+            │     x=±√(-c)
+            └─ Уравнение не имеет решений!
+
+        '''
         if (coefficient_c/coefficient_a) < 0:
             solution_x1 = (-(coefficient_c/coefficient_a))**(1/2)
             solution_x2 = -(-(coefficient_c/coefficient_a))**(1/2)
 
             coef_a_str = f'{coefficient_a}x²' if abs(coefficient_a) != 1 else ('x²' if coefficient_a == 1 else '-x²')
             coef_c_str = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
+            sol_x1_str = f'{int(solution_x1)}' if solution_x1.is_integer() else f'{solution_x1:.2f}'
+            sol_x2_str = f'{int(solution_x2)}' if solution_x1.is_integer() else f'{solution_x2:.2f}'
             coef_a_sol_1 = f'{coefficient_a}x²' if abs(coefficient_a) != 1 else ('x²' if coefficient_a == 1 else '-x²')
             coef_c_sol_1 = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
-            coef_c_sol_2 = f'{-coefficient_c}'
-            coef_c_sol_3 = f'{-coefficient_c}' if coefficient_c < 0 else f'({-coefficient_c})'
-            auxiliary_line_sol = f'\n              {coef_a_sol_1} = {coef_c_sol_2}\n              x = ±√({coef_c_sol_2} / {coefficient_a})' if abs(coefficient_a) != 1 else f'\n              x² = ±{coef_c_sol_3}\n              x = ±√{coef_c_sol_3}'
+            coef_c_sol_2 = f'{-coefficient_c}' if coefficient_c < 0 else f'({-coefficient_c})'
+            auxiliary_line_sol_1 = f'\n              x = ±√({coefficient_c} / {-coefficient_a})' if coefficient_a < 0 else f'\n              x = ±√({-coefficient_c} / {coefficient_a})'
+            auxiliary_line_sol_2 = f'\n              x² = {coefficient_c} / {-coefficient_a}{auxiliary_line_sol_1}' if coefficient_a < 0 else f'\n              x² = {-coefficient_c} / {coefficient_a}{auxiliary_line_sol_1}'
+            auxiliary_line_sol_3 = f'\n              {coef_a_sol_1} = {-coefficient_c} | ÷ {coefficient_a}{auxiliary_line_sol_2}' if coefficient_a > 0 else f'\n              {coef_a_sol_1} = {-coefficient_c} | ÷ ({coefficient_a}){auxiliary_line_sol_2}'
+            auxiliary_line_sol = f'{coef_a_sol_1} = {-coefficient_c}{auxiliary_line_sol_3}' if abs(coefficient_a) != 1 else f'x² = ±{coef_c_sol_2}\n              x = ±√{coef_c_sol_2}'
+            sol_x1_sol = f'{int(solution_x1)}' if solution_x1.is_integer() else f'{solution_x1:.2f}'
+            sol_x2_sol = f'{int(solution_x2)}' if solution_x1.is_integer() else f'{solution_x2:.2f}'
 
             print()
             print('   ──────────────────────────────────────────────')
             print('   Принято квадратное уравнение вида ax²+c=0     ')
             print('   ──────────────────────────────────────────────')
             print(f'   Дано:      {coef_a_str}{coef_c_str} = 0')
-            print(f'   Решение:   {coef_a_sol_1}{coef_c_sol_1} = 0', end='')
+            print(f'   Решение:   {coef_a_sol_1}{coef_c_sol_1} = 0')
             print(f'              {auxiliary_line_sol}')
-            print(f'              x₁ = {solution_x1:.2f}')
-            print(f'              x₂ = {solution_x2:.2f}')
-            print(f'   Ответ:     x₁ = {solution_x1:.2f}')
-            print(f'              x₂ = {solution_x2:.2f}')
+            print(f'              x₁ = {sol_x1_sol}')
+            print(f'              x₂ = {sol_x2_sol}')
+            print(f'   Ответ:     x₁ = {sol_x1_str}')
+            print(f'              x₂ = {sol_x2_str}')
             print('   ──────────────────────────────────────────────')
             print()
             sleep(1)
@@ -311,16 +371,16 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
 
             coef_a_str = f'{coefficient_a}x²' if abs(coefficient_a) != 1 else ('x²' if coefficient_a == 1 else '-x²')
             coef_c_str = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
-            coef_a_sol_1 = f'{coefficient_a}x²' if abs(coefficient_a) != 1 else ('x²' if coefficient_a == 1 else '-x²')
-            coef_c_sol_1 = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
+            coef_a_sol = f'{coefficient_a}x²' if abs(coefficient_a) != 1 else ('x²' if coefficient_a == 1 else '-x²')
+            coef_c_sol = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
 
             print()
             print('   ──────────────────────────────────────────────')
             print('   Принято квадратное уравнение вида ax²+c=0     ')
             print('   ──────────────────────────────────────────────')
             print(f'   Дано:      {coef_a_str}{coef_c_str} = 0')
-            print(f'   Решение:   {coef_a_sol_1}{coef_c_sol_1} = 0')
-            print(f'              {coefficient_c} / {coefficient_a} < 0')
+            print(f'   Решение:   {coef_a_sol}{coef_c_sol} = 0')
+            print(f'              {coefficient_c} / {coefficient_a} > 0')
             print(f'   Ответ:     {solution_x}')
             print('   ──────────────────────────────────────────────')
             print()
