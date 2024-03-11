@@ -2,8 +2,8 @@
 #* ╭─────────────────────────────────╮
 #* │ Name: QESPy CFPR                │ 
 #* │ Version: 1.2                    │ 
-#* │ Build: 09032024                 │ 
-#* │ Build Date: 09-03-2024 9:00 PM  │ 
+#* │ Build: 11032024                 │ 
+#* │ Build Date: 11-03-2024 7:30 PM  │ 
 #* │ Author: Moskvich2020            │ 
 #* │ License: BSD 3-Clause License   │ 
 #* ╰─────────────────────────────────╯
@@ -213,6 +213,7 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
             coefficient_c: коэффициент c
 
         Внутренние переменные:
+            solution_x: корень уравнения
             coef_b_str: форматированный коэффициент b для вывода в строке с "Дано"
             coef_c_str: форматированный коэффициент c для вывода в строке с "Дано"
             sol_x_str: форматированный корень уравнения для вывода в строке с ответом
@@ -251,7 +252,7 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         
         print()
         print('   ──────────────────────────────────────────────')
-        print('   Принято квадратное уравнение вида bx+c=0      ')
+        print('   Принято линейное уравнение вида bx+c=0        ')
         print('   ──────────────────────────────────────────────')
         print(f'   Дано:      {coef_b_str}{coef_c_str} = 0')
         print(f'   Решение:   {coef_b_sol}{coef_c_sol} = 0')
@@ -260,7 +261,7 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         print(f'   Ответ:     x = {sol_x_str}')
         print('   ──────────────────────────────────────────────')
         print()
-        console.print('[dim italic]Примечание: данное уравнение не является квадратным, а линейным (первой степени), так как наивысшая степень этого уравнения 1.[/]')
+        console.print('[italic]Примечание: данное уравнение не является квадратным, а линейным (первой степени), так как наивысшая степень этого уравнения равна 1.[/]')
         print()
         sleep(1)
         while True:
@@ -281,7 +282,7 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
 
         Описание:
             1. Принимает аргументы.
-            2. Проверяет существуют ли решения.
+            2. Проверяет существуют ли решения. Находит их, если они есть.
             3. Генерирует строки для вывода решения в зависимости от коэффициентов.
             4. Выводит решение.
             5. Предлагает продолжить решение или выйти из опции.
@@ -292,6 +293,8 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
 
         Внутренние переменные:
             |a| ≠ 1:
+                solution_x1: корень уравнения №1
+                solution_x2: корень уравнения №2
                 coef_a_str: форматированный коэффициент a для вывода в строке "Дано"
                 coef_c_str: форматированный коэффициент c для вывода в строке "Дано"
                 sol_x1_str: форматированный корень №1 уравнения для вывода в строке с ответом
@@ -309,6 +312,11 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
                 sol_x2_sol: вспомогательная строка для вывода корня №2 в блоке решения
 
             |a| = 1:
+                solution_x: корень уравнения
+                coef_a_str: форматированный коэффициент a для вывода в строке "Дано"
+                coef_c_str: форматированный коэффициент c для вывода в строке "Дано"
+                coef_a_sol: форматированный коэффициент a для вывода данных в блоке решения
+                coef_c_sol: форматированный коэффициент c для вывода данных в блоке решения
 
         Алгоритм решения:
             ax²+c=0
@@ -397,17 +405,74 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
 
     def solving_a_quadratic_equation_3(coefficient_a, coefficient_b): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx=0 | c = 0
+        '''
+        Функция solving_a_quadratic_equation_3 отвечает за решение неполного
+        квадратного уравнения вида ax²+bx=0
+
+        Описание:
+            1. Принимает аргументы.
+            2. Находит решения.
+            3. Генерирует строки для вывода решения в зависимости от коэффициентов.
+            4. Выводит решение.
+            5. Предлагает продолжить решение или выйти из опции.
+
+        Принимаемые аргументы:
+            coefficient_a: коэффициент a
+            coefficient_b: коэффициент b
+
+        Внутренние переменные:
+            solution_x1: корень уравнения №1
+            solution_x2: корень уравнения №2
+            coef_a_str: форматированный коэффициент a для вывода в строке "Дано"
+            coef_b_str: форматированный коэффициент b для вывода в строке "Дано"
+            sol_x1_str: форматированный корень №1 уравнения для вывода в строке с ответом
+            sol_x2_str: форматированный корень №2 уравнения для вывода в строке с ответом
+            coef_a_sol_1: форматированный коэффициент a для вывода данных в блоке решения
+            coef_a_sol_2: форматированный коэффициент a для вывода данных в блоке решения
+            coef_b_sol_1: форматированный коэффициент b для вывода данных в блоке решения
+            coef_b_sol_2: форматированный коэффициент b для вывода данных в блоке решения
+            auxiliary_line_sol_1: вспомогательная строка для вывода данных в блоке решения
+            auxiliary_line_sol_2: вспомогательная строка для вывода данных в блоке решения
+            auxiliary_line_sol_3: вспомогательная строка для вывода данных в блоке решения
+            auxiliary_line_sol: вспомогательная строка для вывода данных в блоке решения,
+                                определяющая дальнейшее действие в зависимости от модуля
+                                коэффициента a
+            sol_x1_sol: вспомогательная строка для вывода корня №1 в блоке решения
+
+        Алгоритм решения:
+            ax²+bx=0
+            │└ |a| ≠ 1
+            │  ax²+bx=0
+            │  x(ax+b)=0
+            │  x₁=0
+            │  x₂=ax+b=0
+            │  x₂=ax=-b
+            │  x₂=-b/a
+            └─ |a| = 1
+                x²+bx=0
+                x(x+b)=0
+                x₁=0
+                x₂=x+b=0
+                x₂=x=-b
+                x₂=-b
+
+        '''
         solution_x1 = 0
         solution_x2 = -(coefficient_b/coefficient_a)
 
         coef_a_str = f'{coefficient_a}x²' if abs(coefficient_a) != 1 else ('x²' if coefficient_a == 1 else '-x²')
         coef_b_str = f' + {coefficient_b}x' if abs(coefficient_b) != 1 and coefficient_b > 0 else (f' - {-coefficient_b}x' if abs(coefficient_b) != 1 and coefficient_b < 0 else (' + x' if coefficient_b == 1 else ' - x'))
+        sol_x1_str = f'{solution_x1}'
+        sol_x2_str = f'{int(solution_x2)}' if solution_x2.is_integer() else f'{solution_x2:.2f}'
         coef_a_sol_1 = f'{coefficient_a}x²' if abs(coefficient_a) != 1 else ('x²' if coefficient_a == 1 else '-x²')
         coef_a_sol_2 = f'{coefficient_a}x' if abs(coefficient_a) != 1 else ('x' if coefficient_a == 1 else '-x')
         coef_b_sol_1 = f' + {coefficient_b}x' if abs(coefficient_b) != 1 and coefficient_b > 0 else (f' - {-coefficient_b}x' if abs(coefficient_b) != 1 and coefficient_b < 0 else (' + x' if coefficient_b == 1 else ' - x'))
         coef_b_sol_2 = f' + {coefficient_b}' if coefficient_b > 0 else f' - {-coefficient_b}'
-        auxiliary_line_sol_1 = f'\n              x₂ = {coef_a_sol_2} = {-coefficient_b}' if abs(coefficient_a) != 1 else (f'\n              x₂ = {-coefficient_b}' if coefficient_a > 0 else f'\n              x₂ = {coefficient_b}')
-        auxiliary_line_sol_2 = f'\n              x₂ = {-coefficient_b} / {coefficient_a}' if abs(coefficient_a) != 1 else ''
+        auxiliary_line_sol_1 = f'\n              x₂ = {int(solution_x2)}' if solution_x2.is_integer() else f'\n              x₂ = {solution_x2:.2f}'
+        auxiliary_line_sol_2 = f'\n              x₂ = {-coefficient_b} / {coefficient_a}{auxiliary_line_sol_1}'
+        auxiliary_line_sol_3 = f'\n              x₂ = {coef_a_sol_2} = {-coefficient_b} | ÷ {coefficient_a}{auxiliary_line_sol_2}' if coefficient_a > 0 else f'\n              x₂ = {coef_a_sol_2} = {-coefficient_b} | ÷ ({coefficient_a}){auxiliary_line_sol_2}'
+        auxiliary_line_sol = f'x₂ = {coef_a_sol_2} = {-coefficient_b}{auxiliary_line_sol_3}' if abs(coefficient_a) != 1 else (f'x₂ = {-coefficient_b}' if coefficient_a > 0 else f'x₂ = {coefficient_b}')
+        sol_x1_sol = f'{solution_x1}'
 
         print()
         print('   ──────────────────────────────────────────────')
@@ -416,13 +481,11 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         print(f'   Дано:      {coef_a_str}{coef_b_str} = 0')
         print(f'   Решение:   {coef_a_sol_1}{coef_b_sol_1} = 0')
         print(f'              x({coef_a_sol_2}{coef_b_sol_2}) = 0')
-        print(f'              x₁ = 0')
-        print(f'              x₂ = {coef_a_sol_2}{coef_b_sol_2} = 0', end='')
-        print(f'              {auxiliary_line_sol_1}', end='')
-        print(f'              {auxiliary_line_sol_2}')
-        print(f'              x₂ = {solution_x2:.2f}')
-        print(f'   Ответ:     x₁ = {solution_x1:.2f}')
-        print(f'              x₂ = {solution_x2:.2f}')
+        print(f'              x₁ = {sol_x1_sol}')
+        print(f'              x₂ = {coef_a_sol_2}{coef_b_sol_2} = 0')
+        print(f'              {auxiliary_line_sol}')
+        print(f'   Ответ:     x₁ = {sol_x1_str}')
+        print(f'              x₂ = {sol_x2_str}')
         print('   ──────────────────────────────────────────────')
         print()
         sleep(1)
