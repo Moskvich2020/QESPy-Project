@@ -2,8 +2,8 @@
 #* ╭─────────────────────────────────╮
 #* │ Name: QESPy CFPR                │ 
 #* │ Version: 1.2                    │ 
-#* │ Build: 14032024                 │ 
-#* │ Build Date: 14-03-2024 8:20 PM  │ 
+#* │ Build: 16032024                 │ 
+#* │ Build Date: 16-03-2024 8:30 PM  │ 
 #* │ Author: Moskvich2020            │ 
 #* │ License: BSD 3-Clause License   │ 
 #* ╰─────────────────────────────────╯
@@ -183,18 +183,16 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
                 solving_a_quadratic_equation_2(coefficient_a, coefficient_c)
             elif coefficient_a != 0 and coefficient_b != 0 and not coefficient_c:
                 solving_a_quadratic_equation_3(coefficient_a, coefficient_b)
-            elif not coefficient_a and not coefficient_b and coefficient_c != 0:
+            elif not coefficient_a and not coefficient_b and (coefficient_c != 0 or not coefficient_c):
                 solving_a_quadratic_equation_4(coefficient_c)
             elif not coefficient_a and coefficient_b != 0 and not coefficient_c:
                 solving_a_quadratic_equation_5(coefficient_b)
             elif coefficient_a != 0 and not coefficient_b and not coefficient_c:
                 solving_a_quadratic_equation_6(coefficient_a)
-            elif not coefficient_a and not coefficient_b and not coefficient_c:
-                solving_a_quadratic_equation_7()
             elif abs(coefficient_a) == 1 and coefficient_b != 0 and coefficient_c != 0:
-                solving_a_quadratic_equation_8(coefficient_a, coefficient_b, coefficient_c)
+                solving_a_quadratic_equation_7(coefficient_a, coefficient_b, coefficient_c)
             else:
-                solving_a_quadratic_equation_9(coefficient_a, coefficient_b, coefficient_c)
+                solving_a_quadratic_equation_8(coefficient_a, coefficient_b, coefficient_c)
 
     def solving_a_quadratic_equation_1(coefficient_b, coefficient_c): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > bx+c=0 | a = 0
         '''
@@ -500,14 +498,15 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
             else:
                 console.print('\n[red]Команда некорректна или не существует![/]\n')
 
-    def solving_a_quadratic_equation_4(coefficient_c): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > c=0 | a и b = 0, c ≠ 0
+    def solving_a_quadratic_equation_4(coefficient_c): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > c=0 | a и b = 0
         '''
         Функция solving_a_quadratic_equation_4 отвечает за решение равенства
-        вида c=0.
+        (линейного уравнения) вида c=0.
 
         Описание:
             1. Принимает аргумент.
-            2. Делает вывод, что c≠0.
+            2. Проверяет равен ли коэффициент c нулю и в зависимости от этого
+                определяет истинность равенства.
             3. Выводит решение.
             4. Предлагает продолжить решение или выйти из опции.
 
@@ -518,34 +517,65 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
             solution_x: корень уравнения
 
         Алгоритм решения:
-            c≠0
+            c=0
+            │└ c≠0
+            │  x∈∅
+            └─ c=0
+                x∈R
 
         '''
-        solution_x = 'Пустое множество!'
+        if coefficient_c != 0:
+            solution_x = 'Пустое множество!'
 
-        print()
-        print('   ──────────────────────────────────────────────')
-        print('   Принято линейное уравнение вида c=0           ')
-        print('   ──────────────────────────────────────────────')
-        print(f'   Ошибка! "{coefficient_c} = 0".')
-        print('   Данное выражение не имеет смысла!')
-        print(f'   Ответ: {solution_x}')
-        print('   ──────────────────────────────────────────────')
-        print()
-        console.print('[italic]Примечание: данное равенство не является уравнением, так как содержит одну неизвестнную величину и очевидно.[/]')
-        console.print('[italic]В данном случае, равенство c = 0 ложно, так как c ≠ 0.[/]')
-        print()
-        sleep(1)
-        while True:
-            print('[N] Продолжить, [E] Выход')
-            pressed_key = getch().lower()
-            if ord(pressed_key) == ord('n'):
-                print()
-                break
-            elif ord(pressed_key) == ord('e'):
-                main_menu()
-            else:
-                console.print('\n[red]Команда некорректна или не существует![/]\n')
+            print()
+            print('   ──────────────────────────────────────────────')
+            print('   Принято линейное уравнение вида c=0           ')
+            print('   ──────────────────────────────────────────────')
+            print(f'   Ошибка! "{coefficient_c} = 0".')
+            print('   Данное выражение не имеет смысла!')
+            print(f'   Ответ: {solution_x}')
+            print('   ──────────────────────────────────────────────')
+            print()
+            console.print('[italic]Примечание: данное равенство не является уравнением, так как содержит одну неизвестнную величину и очевидно.[/]')
+            console.print('[italic]В данном случае, равенство c = 0 ложно, так как c ≠ 0.[/]')
+            print()
+            sleep(1)
+            while True:
+                print('[N] Продолжить, [E] Выход')
+                pressed_key = getch().lower()
+                if ord(pressed_key) == ord('n'):
+                    print()
+                    break
+                elif ord(pressed_key) == ord('e'):
+                    main_menu()
+                else:
+                    console.print('\n[red]Команда некорректна или не существует![/]\n')
+        else:
+            solution_x = 'x может быть любым числом.'
+
+            print()
+            print('   ──────────────────────────────────────────────')
+            print('   Принято квадратное уравнение вида 0=0         ')
+            print('   ──────────────────────────────────────────────')
+            print('   Дано:      0 = 0')
+            print('   Решение:   x принадлежит R')
+            print(f'   Ответ:     {solution_x}')
+            print('   ──────────────────────────────────────────────')
+            print()
+            console.print('[italic]Примечание: данное равенство не является уравнением и очевидно, так как не содержит неизвестных величин и тривиально.[/]')
+            console.print('[italic]В данном случае, равенство 0 = 0 верно и является интуитивно понятным и формально обоснованным утверждением, но с другой стороны не имеет смысла.[/]')
+            print()
+            sleep(1)
+            while True:
+                print('[N] Продолжить, [E] Выход')
+                pressed_key = getch().lower()
+                if ord(pressed_key) == ord('n'):
+                    print()
+                    break
+                elif ord(pressed_key) == ord('e'):
+                    main_menu()
+                else:
+                    console.print('\n[red]Команда некорректна или не существует![/]\n')
 
     def solving_a_quadratic_equation_5(coefficient_b): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > bx=0 | a и c = 0
         '''
@@ -571,7 +601,7 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
 
         print()
         print('   ──────────────────────────────────────────────')
-        print('   Принято квадратное уравнение вида bx=0        ')
+        print('   Принято линейное уравнение вида bx=0          ')
         print('   ──────────────────────────────────────────────')
         print(f'   Дано:      {coefficient_b}x = 0')
         print(f'   Решение:   x = {solution_x}')
@@ -647,34 +677,7 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
             else:
                 console.print('\n[red]Команда некорректна или не существует![/]\n')
     
-    def solving_a_quadratic_equation_7(): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > 0=0 | a и b и c = 0
-        solution_x = 'x может быть любым числом.'
-
-        print()
-        print('   ──────────────────────────────────────────────')
-        print('   Принято квадратное уравнение вида 0=0         ')
-        print('   ──────────────────────────────────────────────')
-        print('   Дано:      0 = 0')
-        print('   Решение:   x принадлежит R')
-        print(f'   Ответ:     {solution_x}')
-        print('   ──────────────────────────────────────────────')
-        print()
-        console.print('[dim italic]Примечание: данное равенство не является уравнением и очевидно, так как не содержит неизвестных величин и тривиально.[/]')
-        console.print('[dim italic]В данном случае, равенство 0 = 0 верно и является интуитивно понятным и формально обоснованным утверждением, но с другой стороны не имеет смысла.[/]')
-        print()
-        sleep(1)
-        while True:
-            print('[N] Продолжить, [E] Выход')
-            pressed_key = getch().lower()
-            if ord(pressed_key) == ord('n'):
-                print()
-                break
-            elif ord(pressed_key) == ord('e'):
-                main_menu()
-            else:
-                console.print('\n[red]Команда некорректна или не существует![/]\n')
-    
-    def solving_a_quadratic_equation_8(coefficient_a, coefficient_b, coefficient_c):  #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > x²+px+q=0 | a = 1, b и c ≠ 0 
+    def solving_a_quadratic_equation_7(coefficient_a, coefficient_b, coefficient_c):  #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > x²+px+q=0 | a = 1, b и c ≠ 0 
         reduced_discriminant = coefficient_b**2 / 4 - coefficient_c
 
         x_str = 'x²' if coefficient_a > 0 else '-x²'
@@ -766,7 +769,7 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
                 else:
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
     
-    def solving_a_quadratic_equation_9(coefficient_a, coefficient_b, coefficient_c): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx+c=0 | a и b и c ≠ 0 
+    def solving_a_quadratic_equation_8(coefficient_a, coefficient_b, coefficient_c): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx+c=0 | a и b и c ≠ 0 
         discriminant = coefficient_b**2 - 4*coefficient_a*coefficient_c
 
         coef_a_str = f'{coefficient_a}x²'

@@ -6,12 +6,11 @@
 Функция solving_a_quadratic_equation_1 отвечает за решениел инейного уравнения вида bx+c=0 ✅
 Функция solving_a_quadratic_equation_2 отвечает за решение неполного квадратного уравнения вида ax²+c=0 ✅
 Функция solving_a_quadratic_equation_3 отвечает за решение неполного квадратного уравнения вида ax²+bx=0 ✅
-Функция solving_a_quadratic_equation_4 отвечает за решение равенства вида c=0 ✅
+Функция solving_a_quadratic_equation_4 отвечает за решение равенства (линейного уравнения) вида c=0 ❗
 Функция solving_a_quadratic_equation_5 отвечает за решение линейного уравнения вида bx=0 ✅
 Функция solving_a_quadratic_equation_6 отвечает за решение неполного квадратного уравнения вида ax²=0 ✅
-Функция solving_a_quadratic_equation_7 отвечает за решение равенства вида 0=0
-Функция solving_a_quadratic_equation_8 отвечает за решение приведённого квадратного уравнения вида x²+px+q=0
-Функция solving_a_quadratic_equation_9 отвечает за решение квадратного уравнения вида ax²+bx+c=0
+Функция solving_a_quadratic_equation_7 отвечает за решение приведённого квадратного уравнения вида x²+px+q=0
+Функция solving_a_quadratic_equation_8 отвечает за решение квадратного уравнения вида ax²+bx+c=0
 
 Описание:
 
