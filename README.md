@@ -1,4 +1,4 @@
-<img src="https://github.com/Moskvich2020/QESPy-Project/blob/Develop/Images/Logo/QESPy%20Project%20-%20Light%20Baner.png" alt="QESPy Project - Baner">
+<img src="https://github.com/Moskvich2020/QESPy-Project/blob/Master/Images/Logo/QESPy%20Project%20-%20Light%20Baner.png" alt="QESPy Project - Baner">
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-v3.12-yellow?style=flat&logo=python&logoColor=yellow" alt="Python Version">
