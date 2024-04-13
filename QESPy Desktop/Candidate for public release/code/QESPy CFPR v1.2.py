@@ -139,6 +139,10 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
     console.print(Panel(Text(text='Решение квадратного уравнения (ax²+bx+c=0)', justify='center'), title='Опция №1'))
 
     def reading_coefficients():
+        '''
+        
+        
+        '''
         while True:
             while True:
                 coefficient_a = input('   Введите коэффициент a: ')
