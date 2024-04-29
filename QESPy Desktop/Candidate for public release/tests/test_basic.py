@@ -1,24 +1,7 @@
-# import os
-# import sys
-import json
-# from msvcrt import getch
-from time import sleep
+coefficient_b = -12
+coefficient_c = 6
 
-# from rich.console import Console
-# from rich.panel import Panel
-# from rich.text import Text
+auxiliary_line_sol_1 = -coefficient_b / 2
+auxiliary_line_sol_11 = f'{int(auxiliary_line_sol_1)}' if auxiliary_line_sol_1.is_integer() else f'{auxiliary_line_sol_1:.2f}'
 
-
-# console = Console()
-# clear = lambda: os.system('cls')
-
-with open('test_settings.json', 'r') as settings:
-    # mod = json.load(settings)
-    mod = settings.read()
-
-set_red = json.loads(mod)
-
-print(set_red["theme"])
-# print(f'theme {config['theme']}')
-# print(f'')
-sleep(5)
+print(auxiliary_line_sol_11)
