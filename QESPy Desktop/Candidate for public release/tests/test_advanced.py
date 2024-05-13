@@ -18,7 +18,12 @@ with open('test_settings.json', 'r') as settings:
 
 set_red = json.loads(mod)
 
-print(set_red["theme"])
+if set_red["theme"] == "white":
+    print('светлая!')
+else:
+    print('тёмная!')
+
+# print(set_red["theme"])
 # print(f'theme {config['theme']}')
 # print(f'')
 sleep(5)
