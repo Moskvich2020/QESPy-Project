@@ -1,12 +1,12 @@
 
-#* ╭─────────────────────────────────╮
-#* │ Name: QESPy CFPR                │ 
-#* │ Version: 1.2                    │ 
-#* │ Build: 16032024                 │ 
-#* │ Build Date: 16-03-2024 8:30 PM  │ 
-#* │ Author: Moskvich2020            │ 
-#* │ License: BSD 3-Clause License   │ 
-#* ╰─────────────────────────────────╯
+#* ╭──────────────────────────────────────────╮
+#* │ Name: QESPy CFPR                         │
+#* │ Version: 1.2                             │ 
+#* │ Build: 29042024                          │ 
+#* │ Build Date: 29-04-2024 9:00 PM           │ 
+#* │ Author: Cristi Constantin (Moskvich2020) │ 
+#* │ License: MAF Original License            │ 
+#* ╰──────────────────────────────────────────╯
 
 import os
 import sys
@@ -28,10 +28,10 @@ def main(): #* main
     Функция main является точкой входа в данной программе.
 
     Описание:
-        1.Очищает консоль.
-        2. Выводит интерфейс командной строки программы QESPy Desktop и после
-        полусекундной задержки вызывает функцию main_menu - главное меню
-        программы.
+        1.  Очищает консоль.
+        2.  Выводит интерфейс командной строки программы QESPy Desktop и после
+            полусекундной задержки вызывает функцию main_menu - главное меню
+            программы.
 
     '''
     clear()
@@ -47,11 +47,11 @@ def main_menu(): #* Главное меню
     выбор опций.
 
     Описание:
-        1. Очищает консоль.
-        2. Выводит главное меню программы.
-        3. Содержит цикл while с функцией getch для отслеживания нажатой
+        1.  Очищает консоль.
+        2.  Выводит главное меню программы.
+        3.  Содержит цикл while с функцией getch для отслеживания нажатой
             клавиши для выбора опции.
-        4. Имеет 7 опций:
+        4.  Имеет 7 опций:
             a. Решение квадратного уравнения (ax²+bx+c=0);
             b. Решение биквадратного уравнения (ax⁴+bx²+c=0);
             c. Разложение квадратного уравнения (ax²+bx+c=a(x-x₁)(x-x₂));
@@ -117,10 +117,28 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
     Функция solving_a_quadratic_equation отвечает за решение всех видов
     квадратного уравнения.
 
+    Содержит в себе вложенные функции для более структурированного и логично
+    построенного алгоритма решения квадратного уравнения. Сама по себе
+    функция является лишь оболочкой для других функций, выполняющих
+    непосредственно решение уравнения.
+
+    Функция так же способна решать и линейные уравнения (когда коэффициент a
+    равен нулю). При этом, после решения, выводится сообщение о том, что
+    полученное уравнение линейное, так как наибольшая степень в нём первая.
+
+    Каждая вложенная функция принимает необходимые для решения уравнения
+    коэффициенты (не принимаются нули, так как они не участвуют в процессе
+    решения). После принятия аргументов функция подставляет коэффициенты в
+    формулы и вычисляет корни уравнения, либо, если существование решений
+    зависит от какого-то условия, проверяет это условие, после аналогично
+    подставляет в формулу. Далее выполняется генерация строк для вывода
+    решения в зависимости от коэффициентов. После функция предлагает
+    продолжить решение или выйти из опции.
+
     Описание:
-        1. Очищает консоль.
-        2. Выводит заголовок опции.
-        3. Вызывает функцию reading_coefficients для считывания коэффициентов. 
+        1.  Очищает консоль.
+        2.  Выводит заголовок опции.
+        3.  Вызывает функцию reading_coefficients для считывания коэффициентов. 
 
     Вложенные функции:
         reading_coefficients: считывание коэффициентов 
@@ -139,44 +157,61 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
     console.print(Panel(Text(text='Решение квадратного уравнения (ax²+bx+c=0)', justify='center'), title='Опция №1'))
 
     def reading_coefficients():
+        '''
+        Функция reading_coefficients() отвечает за считывание коэффициентов.
+
+        Описание:
+            1.  Считывает по очереди коэффициенты.
+            2.  После считывания каждого коэффициента, запускается цикл while с
+                обработчиком ошибок, внутри которого происходит преобразование типа
+                данного считаного коэффициента с типа string на тип float. После идёт
+                проверка, является ли коэффициент целочисленный и при истинности условия
+                преобразовывает коэффициент в тип integer. Это сделано для более
+                презентабельного отображения коэффициентов в блоке с решением уравнения.
+                Коэффициенты выводятся с двумя знаками после запятой. Во время выполнения
+                этих преобразований обработчик ошибок отслеживает исключение ValueError.
+                Это сделано на тот случай если пользователь введёт вместо числа строку.
+                При возникновении данной ошибки пользователю выводится сообщение об ошибке
+                и предлагается ввести коэффициент ещё раз. Если ошибок не возникает,
+                происходит выход из цикла и продолжение выполнение кода.
+            3.  Определяет тип квадратного уравнения и вызывает функцию для решения
+                этого типа квадратного уравнения, предавая коэффициенты как аргументы.
+
+        Внутренние переменные:
+            coefficient_a: коэффициент a
+            coefficient_b: коэффициент b
+            coefficient_c: коэффициент c
+        
+        '''
         while True:
             while True:
-                coefficient_a = input('   Введите коэффициент a: ')
                 try:
-                    coefficient_a = float(coefficient_a)
+                    coefficient_a = float(input('   Введите коэффициент a: '))
                     if coefficient_a.is_integer():
                         coefficient_a = int(coefficient_a)
-                    else:
-                        pass
                     break
                 except ValueError:
                     console.print('\n[red]Ошибка! Коэффициент a не является числом! Введите, пожалуйста, ещё раз число![/]')
                     console.print('[italic red]Примечание: старайтесь использовать целочисленные коэффициенты с не более чем двумя цифрами после запятой и со значением не более 1000. Обязательно разделяйте целую часть числа от дробной точкой (".").[/]\n')
             while True:
-                coefficient_b = input('   Введите коэффициент b: ')
                 try:
-                    coefficient_b = float(coefficient_b)
+                    coefficient_b = float(input('   Введите коэффициент b: '))
                     if coefficient_b.is_integer():
                         coefficient_b = int(coefficient_b)
-                    else:
-                        pass
                     break
                 except ValueError:
                     console.print('\n[red]Ошибка! Коэффициент b не является числом! Введите, пожалуйста, ещё раз число![/]')
                     console.print('[italic red]Примечание: старайтесь использовать целочисленные коэффициенты с не более чем двумя цифрами после запятой и со значением не более 1000. Обязательно разделяйте целую часть числа от дробной точкой (".").[/]\n')
             while True:
-                coefficient_c = input('   Введите коэффициент c: ')
                 try:
-                    coefficient_c = float(coefficient_c)
+                    coefficient_c = float(input('   Введите коэффициент c: '))
                     if coefficient_c.is_integer():
                         coefficient_c = int(coefficient_c)
-                    else:
-                        pass
                     break
                 except ValueError:
                     console.print('\n[red]Ошибка! Коэффициент c не является числом! Введите, пожалуйста, ещё раз число![/]')
                     console.print('[italic red]Примечание: старайтесь использовать целочисленные коэффициенты с не более чем двумя цифрами после запятой и со значением не более 1000. Обязательно разделяйте целую часть числа от дробной точкой (".").[/]\n')
-
+            
             if not coefficient_a and coefficient_b != 0 and coefficient_c != 0:
                 solving_a_quadratic_equation_1(coefficient_b, coefficient_c)
             elif coefficient_a != 0 and not coefficient_b and coefficient_c != 0:
@@ -200,11 +235,11 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         уравнения вида bx+c=0.
 
         Описание:
-            1. Принимает аргументы.
-            2. Находит решения.
-            3. Генерирует строки для вывода решения в зависимости от коэффициентов.
-            4. Выводит решение.
-            5. Предлагает продолжить решение или выйти из опции.
+            1.  Принимает аргументы.
+            2.  Находит решения.
+            3.  Генерирует строки для вывода решения в зависимости от коэффициентов.
+            4.  Выводит решение.
+            5.  Предлагает продолжить решение или выйти из опции.
 
         Принимаемые аргументы:
             coefficient_b: коэффициент b
@@ -279,11 +314,11 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         квадратного уравнения вида ax²+c=0.
 
         Описание:
-            1. Принимает аргументы.
-            2. Проверяет существуют ли решения. Находит их, если они есть.
-            3. Генерирует строки для вывода решения в зависимости от коэффициентов.
-            4. Выводит решение.
-            5. Предлагает продолжить решение или выйти из опции.
+            1.  Принимает аргументы.
+            2.  Проверяет существуют ли решения. Находит их, если они есть.
+            3.  Генерирует строки для вывода решения в зависимости от коэффициентов.
+            4.  Выводит решение.
+            5.  Предлагает продолжить решение или выйти из опции.
 
         Принимаемые аргументы:
             coefficient_a: коэффициент a
@@ -337,7 +372,7 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
             coef_a_str = f'{coefficient_a}x²' if abs(coefficient_a) != 1 else ('x²' if coefficient_a == 1 else '-x²')
             coef_c_str = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
             sol_x1_str = f'{int(solution_x1)}' if solution_x1.is_integer() else f'{solution_x1:.2f}'
-            sol_x2_str = f'{int(solution_x2)}' if solution_x1.is_integer() else f'{solution_x2:.2f}'
+            sol_x2_str = f'{int(solution_x2)}' if solution_x2.is_integer() else f'{solution_x2:.2f}'
             coef_a_sol_1 = f'{coefficient_a}x²' if abs(coefficient_a) != 1 else ('x²' if coefficient_a == 1 else '-x²')
             coef_c_sol_1 = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
             coef_c_sol_2 = f'{-coefficient_c}' if coefficient_c < 0 else f'({-coefficient_c})'
@@ -346,7 +381,7 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
             auxiliary_line_sol_3 = f'\n              {coef_a_sol_1} = {-coefficient_c} | ÷ {coefficient_a}{auxiliary_line_sol_2}' if coefficient_a > 0 else f'\n              {coef_a_sol_1} = {-coefficient_c} | ÷ ({coefficient_a}){auxiliary_line_sol_2}'
             auxiliary_line_sol = f'{coef_a_sol_1} = {-coefficient_c}{auxiliary_line_sol_3}' if abs(coefficient_a) != 1 else f'x² = ±{coef_c_sol_2}\n              x = ±√{coef_c_sol_2}'
             sol_x1_sol = f'{int(solution_x1)}' if solution_x1.is_integer() else f'{solution_x1:.2f}'
-            sol_x2_sol = f'{int(solution_x2)}' if solution_x1.is_integer() else f'{solution_x2:.2f}'
+            sol_x2_sol = f'{int(solution_x2)}' if solution_x2.is_integer() else f'{solution_x2:.2f}'
 
             print()
             print('   ──────────────────────────────────────────────')
@@ -408,11 +443,11 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         квадратного уравнения вида ax²+bx=0.
 
         Описание:
-            1. Принимает аргументы.
-            2. Находит решения.
-            3. Генерирует строки для вывода решения в зависимости от коэффициентов.
-            4. Выводит решение.
-            5. Предлагает продолжить решение или выйти из опции.
+            1.  Принимает аргументы.
+            2.  Находит решения.
+            3.  Генерирует строки для вывода решения в зависимости от коэффициентов.
+            4.  Выводит решение.
+            5.  Предлагает продолжить решение или выйти из опции.
 
         Принимаемые аргументы:
             coefficient_a: коэффициент a
@@ -504,11 +539,11 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         (линейного уравнения) вида c=0.
 
         Описание:
-            1. Принимает аргумент.
-            2. Проверяет равен ли коэффициент c нулю и в зависимости от этого
+            1.  Принимает аргумент.
+            2.  Проверяет равен ли коэффициент c нулю и в зависимости от этого
                 определяет истинность равенства.
-            3. Выводит решение.
-            4. Предлагает продолжить решение или выйти из опции.
+            3.  Выводит решение.
+            4.  Предлагает продолжить решение или выйти из опции.
 
         Принимаемые аргументы:
             coefficient_c: коэффициент c
@@ -583,9 +618,9 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         уравнения вида bx=0.
 
         Описание:
-            1. Принимает аргумент.
-            2. Выводит решение.
-            3. Предлагает продолжить решение или выйти из опции.
+            1.  Принимает аргумент.
+            2.  Выводит решение.
+            3.  Предлагает продолжить решение или выйти из опции.
 
         Принимаемые аргументы:
             coefficient_b: коэффициент b
@@ -625,12 +660,12 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
     def solving_a_quadratic_equation_6(coefficient_a): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²=0 | b и c = 0
         '''
         Функция solving_a_quadratic_equation_6 отвечает за решение неполного
-        квадратного уравнения вида ax²=0
+        квадратного уравнения вида ax²=0.
 
         Описание:
-            1. Принимает аргумент.
-            2. Выводит решения.
-            3. Предлагает продолжить решение или выйти из опции.
+            1.  Принимает аргумент.
+            2.  Выводит решения.
+            3.  Предлагает продолжить решение или выйти из опции.
 
         Принимаемые аргументы:
             coefficient_a: коэффициент a
@@ -678,6 +713,68 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
                 console.print('\n[red]Команда некорректна или не существует![/]\n')
     
     def solving_a_quadratic_equation_7(coefficient_a, coefficient_b, coefficient_c):  #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > x²+px+q=0 | a = 1, b и c ≠ 0 
+        '''
+        Функция solving_a_quadratic_equation_7 предназначена для решения
+        приведённого квадратного уравнения вида x²+px+q=0.
+
+        Описание:
+            1.  Принимает аргументы.
+            2.  Вычисляет приведённый дискриминант и определяет существуют ли решения.
+            3.  Находит решения.
+            4.  Генерирует строки для вывода решения в зависимости от коэффициентов.
+            5.  Выводит решения.
+            6.  Предлагает продолжить решение или выйти из опции.
+
+        Принимаемые аргументы:
+            coefficient_a: коэффициент a
+            coefficient_b: коэффициент b
+            coefficient_c: коэффициент c
+
+        Внутренние переменные:
+            reduced_discriminant: приведённый дискриминант
+            x_str: форматированный коэффициент a для вывода в строке "Дано"
+            coef_p_str: форматированный коэффициент b для вывода в строке "Дано"
+            coef_q_str: форматированный коэффициент c для вывода в строке "Дано"
+            coef_p_red_dis: форматированный коэффициент b для вывода в блоке "Решение",
+                            в строке вычисления приведённого дискриминанта
+            coef_q_red_dis: форматированный коэффициент b для вывода в блоке "Решение",
+                            в строке вычисления приведённого дискриминанта
+            auxiliary_line_dis_1: вспомогательная строка для вывода данных в блоке 
+                            нахождения приведённого дискриминанта
+            auxiliary_line_dis_11: вспомогательная строка для вывода данных в блоке 
+                            нахождения приведённого дискриминанта
+            auxiliary_line_dis_2: вспомогательная строка для вывода данных в блоке 
+                            нахождения приведённого дискриминанта
+            auxiliary_line_dis_22: вспомогательная строка для вывода данных в блоке
+                            нахождения приведённого дискриминанта
+            reduced_discriminant_dis: форматирование приведённого дискриминанта для
+                            вывода данных в блоке решения
+            coef_p_sol: форматированный коэффициент b для вывода в блоке "Решение"
+            coef_q_sol: форматированный коэффициент b для вывода в блоке "Решение"
+            auxiliary_line_sol_1: вспомогательная строка для вывода данных в блоке решения
+            auxiliary_line_sol_11: вспомогательная строка для вывода данных в блоке решения
+            auxiliary_line_dis_sol_1: вспомогательная строка для вывода данных в блоке решения
+            auxiliary_line_dis_sol_11: вспомогательная строка для вывода данных в блоке решения
+            auxiliary_line_dis_sol_2: вспомогательная строка для вывода данных в блоке решения
+            auxiliary_line_dis_sol_22: вспомогательная строка для вывода данных в блоке решения
+            reduced_discriminant_sol: вывод форматированного приведённого дискриминанта в блоке решения
+            sol_x_str: вспомогательная строка для вывода корня в блоке решения при D = 0
+            sol_x1_str: вспомогательная строка для вывода корня №1 в блоке решения при D > 0
+            sol_x1_str: вспомогательная строка для вывода корня №2 в блоке решения при D > 0
+
+        Алгоритм решения:
+            x²+px+q=0
+            ││└ D > 0
+            ││  D = b²/(4-c)
+            ││  x₁ = -b/2+√(b²/(4-c))
+            ││  x₂ = -b/2-√(b²/(4-c))
+            │└ D = 0
+            │  D = b²/(4-c)
+            │  x = -b/2
+            └ D < 0
+            Уравнение не имеет решений!
+
+        '''
         reduced_discriminant = coefficient_b**2 / 4 - coefficient_c
 
         x_str = 'x²' if coefficient_a > 0 else '-x²'
@@ -685,27 +782,43 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         coef_q_str = f' + {coefficient_c}' if coefficient_c > 0 else f' - {-coefficient_c}'
         coef_p_red_dis = f'{coefficient_b}' if coefficient_b > 0 else f'({coefficient_b})'
         coef_q_red_dis = f' - {coefficient_c}' if coefficient_c > 0 else f' + {-coefficient_c}'
+        auxiliary_line_dis_1 = coefficient_b**2
+        auxiliary_line_dis_11 = f'{int(auxiliary_line_dis_1)}' if auxiliary_line_dis_1.is_integer() else f'{auxiliary_line_dis_1:.2f}'
+        auxiliary_line_dis_2 = coefficient_b**2 / 4
+        auxiliary_line_dis_22 = f'{int(auxiliary_line_dis_2)}' if auxiliary_line_dis_2.is_integer() else f'{auxiliary_line_dis_2:.2f}'
+        reduced_discriminant_dis = f'{int(reduced_discriminant)}' if reduced_discriminant.is_integer() else f'{reduced_discriminant:.2f}'
         coef_p_sol = f'{coefficient_b}' if coefficient_b > 0 else f'({coefficient_b})'
         coef_q_sol = f' - {coefficient_c}' if coefficient_c > 0 else f' + {-coefficient_c}'
+        auxiliary_line_sol_1 = -coefficient_b / 2
+        auxiliary_line_sol_11 = f'{int(auxiliary_line_sol_1)}' if auxiliary_line_sol_1.is_integer() else f'{auxiliary_line_sol_1:.2f}'
+        auxiliary_line_dis_sol_1 = coefficient_b**2
+        auxiliary_line_dis_sol_11 = f'{int(auxiliary_line_dis_sol_1)}' if auxiliary_line_dis_sol_1.is_integer() else f'{auxiliary_line_dis_sol_1:.2f}'
+        auxiliary_line_dis_sol_2 = coefficient_b**2 / 4
+        auxiliary_line_dis_sol_22 = f'{int(auxiliary_line_dis_sol_2)}' if auxiliary_line_dis_sol_2.is_integer() else f'{auxiliary_line_dis_sol_2:.2f}'
+        reduced_discriminant_sol = f'{int(reduced_discriminant)}' if reduced_discriminant.is_integer() else f'{reduced_discriminant:.2f}'
 
         if reduced_discriminant > 0:
             solution_x1 = -coefficient_b / 2 + (coefficient_b**2 / 4 - coefficient_c)**(1/2)
             solution_x2 = -coefficient_b / 2 - (coefficient_b**2 / 4 - coefficient_c)**(1/2)
+
+            sol_x1_str = f'{int(solution_x1)}' if solution_x1.is_integer() else f'{solution_x1:.2f}'
+            sol_x2_str = f'{int(solution_x2)}' if solution_x2.is_integer() else f'{solution_x2:.2f}'
+
             print()
             print('   ──────────────────────────────────────────────')
             print('   Принято квадратное уравнение вида x²+px+q=0   ')
             print('   ──────────────────────────────────────────────')
             print(f'   Дано:      {x_str}{coef_p_str}{coef_q_str} = 0')
             print(f'   Решение:   D = {coef_p_red_dis}² / 4{coef_q_red_dis}')
-            print(f'              D = {coefficient_b**2:.2f} / 4{coef_q_red_dis}')
-            print(f'              D = {coefficient_b**2 / 4:.2f}{coef_q_red_dis}')
-            print(f'              D = {reduced_discriminant:.2f}')
+            print(f'              D = {auxiliary_line_dis_11} / 4{coef_q_red_dis}')
+            print(f'              D = {auxiliary_line_dis_22}{coef_q_red_dis}')
+            print(f'              D = {reduced_discriminant_dis}')
             print(f'              x = -({coefficient_b} / 2) ± √({coef_p_sol}² / 4{coef_q_sol})')
-            print(f'              x = {-coefficient_b / 2:.2f} ± √({coefficient_b**2:.2f} / 4{coef_q_sol})')
-            print(f'              x = {-coefficient_b / 2:.2f} ± √({coefficient_b**2 / 4:.2f}{coef_q_sol})')
-            print(f'              x = {-coefficient_b / 2:.2f} ± √{reduced_discriminant}')
-            print(f'   Ответ:     x₁ = {solution_x1:.2f}')
-            print(f'              x₂ = {solution_x2:.2f}')
+            print(f'              x = {auxiliary_line_sol_11} ± √({auxiliary_line_dis_sol_11} / 4{coef_q_sol})')
+            print(f'              x = {auxiliary_line_sol_11} ± √({auxiliary_line_dis_sol_22}{coef_q_sol})')
+            print(f'              x = {auxiliary_line_sol_11} ± √{reduced_discriminant_sol}')
+            print(f'   Ответ:     x₁ = {sol_x1_str}')
+            print(f'              x₂ = {sol_x2_str}')
             print('   ──────────────────────────────────────────────')
             print()
             sleep(1)
@@ -721,17 +834,20 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
         elif not reduced_discriminant:
             solution_x = -coefficient_b / 2
+            
+            sol_x_str = f'{int(solution_x)}' if solution_x.is_integer() else f'{solution_x:.2f}'
+            
             print()
             print('   ──────────────────────────────────────────────')
             print('   Принято квадратное уравнение вида x²+px+q=0   ')
             print('   ──────────────────────────────────────────────')
             print(f'   Дано:      {x_str}{coef_p_str}{coef_q_str} = 0')
             print(f'   Решение:   D = {coef_p_red_dis}² / 4{coef_q_red_dis}')
-            print(f'              D = {coefficient_b**2:.2f} / 4{coef_q_red_dis}')
-            print(f'              D = {coefficient_b**2 / 4:.2f}{coef_q_red_dis}')
-            print(f'              D = {reduced_discriminant:.2f}')
+            print(f'              D = {auxiliary_line_dis_11} / 4{coef_q_red_dis}')
+            print(f'              D = {auxiliary_line_dis_22}{coef_q_red_dis}')
+            print(f'              D = {reduced_discriminant_dis}')
             print(f'              x = -({coefficient_b} / 2)')
-            print(f'   Ответ:     x = {solution_x:.2f}')
+            print(f'   Ответ:     x = {sol_x_str}')
             print('   ──────────────────────────────────────────────')
             sleep(1)
             while True:
@@ -751,9 +867,10 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
             print('   ──────────────────────────────────────────────')
             print(f'   Дано:      {x_str}{coef_p_str}{coef_q_str} = 0')
             print(f'   Решение:   D = {coef_p_red_dis}² / 4{coef_q_red_dis}')
-            print(f'              D = {coefficient_b**2:.2f} / 4{coef_q_red_dis}')
-            print(f'              D = {coefficient_b**2 / 4:.2f}{coef_q_red_dis}')
-            print(f'              D = {reduced_discriminant:.2f}')
+            print(f'              D = {auxiliary_line_dis_11} / 4{coef_q_red_dis}')
+            print(f'              D = {auxiliary_line_dis_22}{coef_q_red_dis}')
+            print(f'              D = {reduced_discriminant_dis}')
+            print(f'              {reduced_discriminant_dis} < 0 => ∅')
             print('   Ответ:     Уравнение не имеет решений!')
             print('   ──────────────────────────────────────────────')
             print()
@@ -769,7 +886,24 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
                 else:
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
     
-    def solving_a_quadratic_equation_8(coefficient_a, coefficient_b, coefficient_c): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx+c=0 | a и b и c ≠ 0 
+    def solving_a_quadratic_equation_8(coefficient_a, coefficient_b, coefficient_c): #* Главное меню > Решение квадратного уравнения (ax²+bx+c=0) > ax²+bx+c=0 | a и b и c ≠ 0
+        '''
+        Функция solving_a_quadratic_equation_8 предназначена для решения квадратного уравнения вида ax²+bx+c=0.
+
+        Описание:
+            1.  Принимает аргументы.
+            2.  Вычисляет дискриминант и определяет существуют ли решения.
+            3.  Находит решения.
+            4.  Генерирует строки для вывода решения в зависимости от коэффициентов.
+            5.  Выводит решения.
+            6.  Предлагает продолжить решение или выйти из опции.
+
+        Принимаемые аргументы:
+            coefficient_a: коэффициент a
+            coefficient_b: коэффициент b
+            coefficient_c: коэффициент c
+
+        '''
         discriminant = coefficient_b**2 - 4*coefficient_a*coefficient_c
 
         coef_a_str = f'{coefficient_a}x²'
@@ -778,27 +912,39 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
         coef_a_dis = f'{coefficient_a}' if coefficient_a > 0 else f'({coefficient_a})'
         coef_b_dis = f'{coefficient_b}' if coefficient_b > 0 else f'({coefficient_b})'
         coef_c_dis = f'{coefficient_c}' if coefficient_c > 0 else f'({coefficient_c})'
-        a_c_dis = f' - {4 * coefficient_a * coefficient_c:.2f}' if 4 * coefficient_a * coefficient_c > 0 else f' + {abs(4*coefficient_a*coefficient_c):.2f}'
+        auxiliary_line_dis = coefficient_b**2
+        auxiliary_line_dis_ = f'{int(auxiliary_line_dis)}' if auxiliary_line_dis.is_integer() else f'{auxiliary_line_dis:.2f}'
+        discriminant_dis = f'{int(discriminant)}' if discriminant.is_integer() else f'{discriminant:.2f}'
+        a_c_dis = f' - {4 * coefficient_a * coefficient_c}' if 4 * coefficient_a * coefficient_c > 0 else f' + {abs(4*coefficient_a*coefficient_c)}'
         coef_a_sol = f'{coefficient_a}' if coefficient_a > 0 else f'({coefficient_a})'
         coef_b_sol_1 = f'(-{coefficient_b}' if coefficient_b > 0 else f'(-({coefficient_b})'
         coef_b_sol_2 = f'(-{coefficient_b}' if coefficient_b > 0 else f'({-coefficient_b}'
-        dis_sol = f'√{discriminant:.2f})' if discriminant > 0 else f'√({discriminant:.2f}))'
+        a_2_sol_ = 2*coefficient_a
+        a_2_sol =f'{int(a_2_sol_)}' if a_2_sol_.is_integer() else f'{a_2_sol_:.2f}'
+        discriminant_sol = f'{int(discriminant)}' if discriminant.is_integer() else f'{discriminant:.2f}'
+        discriminant_sol_1 = f'√{discriminant_sol})' if discriminant > 0 else f'√({discriminant_sol}))'
+        discriminant_sol_ = discriminant**(1/2)
+        discriminant_sol_2 = f'{int(discriminant_sol_)}' if discriminant_sol_.is_integer() else f'{discriminant_sol_:.2f}'
 
         if discriminant > 0:
             solution_x1 = (-coefficient_b + discriminant**(1/2)) / (2*coefficient_a)
             solution_x2 = (-coefficient_b - discriminant**(1/2)) / (2*coefficient_a)
+
+            sol_x1_str = f'{int(solution_x1)}' if solution_x1.is_integer() else f'{solution_x1:.2f}'
+            sol_x2_str = f'{int(solution_x2)}' if solution_x2.is_integer() else f'{solution_x2:.2f}'
+
             print()
-            print('   ─────────────────────────────────────────────────────────')
+            print('   ──────────────────────────────────────────────')
             print('   Принято квадратное уравнение вида ax²+bx+c=0  ')
             print('   ──────────────────────────────────────────────')
             print(f'   Дано:      {coef_a_str}{coef_b_str}{coef_c_str} = 0')
             print(f'   Решение:   D = {coef_b_dis}² - 4 × {coef_a_dis} × {coef_c_dis}')
-            print(f'              D = {coefficient_b**2:.2f}{a_c_dis}')
-            print(f'              D = {discriminant:.2f}')
-            print(f'              x = {coef_b_sol_1} ± {dis_sol} / (2 × {coef_a_sol})')
-            print(f'              x = {coef_b_sol_2} ± {discriminant**(1/2):.2f}) / ({2*coefficient_a:.2f})')
-            print(f'   Ответ:     x₁ = {solution_x1:.2f}')
-            print(f'              x₂ = {solution_x2:.2f}')
+            print(f'              D = {auxiliary_line_dis_}{a_c_dis}')
+            print(f'              D = {discriminant_dis}')
+            print(f'              x = {coef_b_sol_1} ± {discriminant_sol_1} / (2 × {coef_a_sol})')
+            print(f'              x = {coef_b_sol_2} ± {discriminant_sol_2}) / ({a_2_sol})')
+            print(f'   Ответ:     x₁ = {sol_x1_str}')
+            print(f'              x₂ = {sol_x2_str}')
             print('   ──────────────────────────────────────────────')
             print()
             sleep(1)
@@ -814,17 +960,20 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
                     console.print('\n[red]Команда некорректна или не существует![/]\n')
         elif not discriminant:
             solution_x = -((coefficient_b) / (2*coefficient_a))
+
+            sol_x_str = f'{int(solution_x)}' if solution_x.is_integer() else f'{solution_x:.2f}'
+
             print()
             print('   ──────────────────────────────────────────────')
             print('   Принято квадратное уравнение вида ax²+bx+c=0  ')
             print('   ──────────────────────────────────────────────')
             print(f'   Дано:      {coef_a_str}{coef_b_str}{coef_c_str} = 0')
             print(f'   Решение:   D = {coef_b_dis}² - 4 × {coef_a_dis} × {coef_c_dis}')
-            print(f'              D = {coefficient_b**2:.2f}{a_c_dis}')
-            print(f'              D = {discriminant:.2f}')
+            print(f'              D = {auxiliary_line_dis_}{a_c_dis}')
+            print(f'              D = {discriminant_dis}')
             print(f'              x = {coef_b_sol_1}) / ( 2 × {coef_a_sol})')
-            print(f'              x = {coef_b_sol_2}) / ({2*coef_a_sol})')
-            print(f'   Ответ:     x = {solution_x:.2f}')
+            print(f'              x = {coef_b_sol_2}) / ({a_2_sol})')
+            print(f'   Ответ:     x = {sol_x_str}')
             print('   ──────────────────────────────────────────────')
             sleep(1)
             while True:
@@ -844,8 +993,8 @@ def solving_a_quadratic_equation(): #* Главное меню > Решение 
             print('   ──────────────────────────────────────────────')
             print(f'   Дано:      {coef_a_str}{coef_b_str}{coef_c_str} = 0')
             print(f'   Решение:   D = {coef_b_dis}² - 4 × {coef_a_dis} × {coef_c_dis}')
-            print(f'              D = {coefficient_b**2:.2f}{a_c_dis}')
-            print(f'              D = {discriminant:.2f}')
+            print(f'              D = {auxiliary_line_dis_}{a_c_dis}')
+            print(f'              D = {discriminant_dis}')
             print('   Ответ:     Уравнение не имеет решений!')
             print('   ──────────────────────────────────────────────')
             print()
