@@ -47,7 +47,7 @@
 <p align="justify">
   Программное обеспечение можно скачать на двух основных ресурсах проекта:
   <ul>
-    <li><a href="https://qespy-project.free.nf">официальном сайте </a>проекта;</li>
+    <li><a href="https://qespy-project.free.nf">официальном сайте </a>проекта (на стадии разработки);</li>
     <li><a href="https://github.com/Moskvich2020/QESPy-Project">официальном GitHub-репозитории </a>проекта в разделе <a href="https://github.com/Moskvich2020/QESPy-Project/releases">“Releases”</a>.</li>
   </ul>
 </p>
