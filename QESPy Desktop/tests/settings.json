@@ -6,5 +6,9 @@
         "para na hutora",
         "v dali ot procei seroi heri",
         "gne net, ebena mati, bacterii"
-    ]
+    ],
+    "dict": {
+        "user1": "Mike",
+        "user2": "John"
+    }
 }
