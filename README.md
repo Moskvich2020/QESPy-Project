@@ -1,4 +1,4 @@
-<img src="https://github.com/Moskvich2020/QESPy-Project/blob/Develop/Images/PNG/QESPy%20Project%20-%20Light%20Banner%20%2B%20Gradient%20(effects%20off).png" alt="QESPy Project - Light Baner Gradient (Effects off)">
+<img src="https://github.com/Moskvich2020/QESPy-Project/blob/Master/Images/PNG/QESPy%20Project%20-%20Light%20Banner%20+%20Gradient%20(effects%20off).png" alt="QESPy Project - Light Baner Gradient (Effects off)">
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-v3.12-yellow?style=flat&logo=python&logoColor=yellow" alt="Python Version">
