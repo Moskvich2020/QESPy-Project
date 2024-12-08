@@ -1,17 +1,18 @@
 <img src="https://github.com/Moskvich2020/QESPy-Project/blob/Develop/Images/PNG/QESPy%20Project%20-%20Light%20Banner%20%2B%20Gradient%20(effects%20off).png" alt="QESPy Project - Light Baner Gradient (Effects off)">
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-v3.12-yellow?style=flat&logo=python&logoColor=yellow" alt="Python Version">
-  <img src="https://img.shields.io/badge/QESPy%20Desktop-v0.7.2-blue?style=flat" alt="QESPy Desktop Version">
-  <img src="https://img.shields.io/badge/Windows-blue?style=flat&logo=windows" alt="OS">
-  <img src="https://img.shields.io/badge/%D0%9B%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F-MAF%20Original%20License-gren?style=flat" alt="License">
+  <img src="https://img.shields.io/badge/Python-v3.12-yellow?style=flat-square&logo=Python&logoColor=yellow" alt="Python Version">
+  <img src="https://img.shields.io/badge/QESPy%20Desktop-v1.0.0-blue?style=flat-square&logo=app&logoColor=blue
+" alt="QESPy Desktop Version">
+  <img src="https://img.shields.io/badge/Windows-blue?style=flat-square&logo=windows&logoColor=blue" alt="OS">
+  <img src="https://img.shields.io/badge/%D0%9B%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F-MAF_Original_License-gren?style=flat-square" alt="License">
 </p>
 
 
 <h3 align="center">О ПРОЕКТЕ</h3>
 
 <p align="justify">
-  <b>QESPy Project</b> – проект, созданный с целью помощи в изучении основ математики. Он предоставляет все необходимые инструменты для освоения квадратных уравнений и связанных с ними тем. Главным его атрибутом является <b>программное обеспечение QESPy Desktop</b>.
+  <b>QESPy Project</b> – пет-проект, созданный с целью помощи в изучении основ математики. Он предоставляет все необходимые инструменты для освоения квадратных уравнений и связанных с ними тем. Главным его атрибутом является <b>программное обеспечение QESPy Desktop</b>.
 </p>
 
 <p align="justify">

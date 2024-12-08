@@ -1,0 +1,57 @@
+$$
+\LaTeX{}
+$$
+Ссылка №1:
+$$
+1.\lim_{x\to-1}\frac{x^2-4x-5}{x^2+10x+9}=\lim_{x\to-1}\frac{(x-5)(x+1)}{(x+1)(x+9)}=\lim_{x\to-1}\frac{x-5}{x+9}=\frac{-1-5}{-1+9}=\frac{-6}{8}=-\frac{3}{4}=-0,75;
+$$
+$$
+2.\lim_{x\to2}\frac{2x-4}{x^2-4}=\lim_{x\to2}\frac{2(x-2)}{(x+2)(x-2)}=\lim_{x\to2}\frac{2}{x+2}=\frac{2}{2+2}=\frac{2}{4}=\frac{1}{2}=0,5;
+$$
+$$
+3.\lim_{x\to3}\frac{x^2-9}{x^2-3x}=\lim_{x\to3}\frac{(x-3)(x+3)}{x(x-3)}=\lim_{x\to3}\frac{x+3}{x}=\frac{3+3}{3}=\frac{6}{3}=2;
+$$
+$$
+4.\lim_{x\to-5}\frac{x^2-25}{x^2+9x+20}=\lim_{x\to-5}\frac{(x-5)(x+5)}{(x+4)(x+5)}=\lim_{x\to-5}\frac{x-5}{x+4}=\frac{-5-5}{-5+4}=\frac{-10}{-1}=10;
+$$
+$$
+5.\lim_{x\to-1}\frac{x^2+2x+1}{x^2-2x-3}=\lim_{x\to-1}\frac{(x+1)^2}{(x-3)(x+1)}=\lim_{x\to-1}\frac{x+1}{x-3}=\frac{-1+1}{-1-3}=\frac{0}{-4}=0;
+$$
+$$
+6.\lim_{x\to0}\frac{x^2-2x}{x^3-2x^2+4x}=\lim_{x\to0}\frac{x(x-2)}{x(x^2-2x+4)}=\lim_{x\to0}\frac{x-2}{x^2-2x+4}=\frac{0-2}{0^2-2\times0+4}=\frac{-2}{4}=-\frac{1}{2}=-0,5.
+$$
+Ссылка №2:
+$$
+1.\lim_{x\to5}\frac{x^2+3x-10}{x+5}=\lim_{x\to5}\frac{(x-2)(x+5)}{x+5}=\lim_{x\to5}(x-2)=5-2=3;
+$$
+$$
+2.\lim_{x\to25}\frac{\sqrt{x}-5}{x-25}=\lim_{x\to25}\frac{\sqrt{x}-5}{(\sqrt{x}-5)(\sqrt{x}+5)}=\lim_{x\to25}\frac{1}{\sqrt{x}+5}=\frac{1}{\sqrt{25}+5}=\frac{1}{5+5}=\frac{1}{10}=0,1;
+$$
+$$
+3.\lim_{x\to\infty}\frac{16x-3x^2+12}{x^3-6x+3}=\lim_{x\to\infty}\frac{-3x^2}{x^3}=\lim_{x\to\infty}\frac{-3}{x}=\frac{-3}{\infty}=0;
+$$
+$$
+4.\lim_{x\to\infty}\frac{x^6-5x^2+3x^3}{7x^3-4x^2+3}=\lim_{x\to\infty}\frac{x^6}{7x^3}=\lim_{x\to\infty}\frac{x^3}{7}=\frac{\infty^3}{7}=\frac{\infty}{7}=\infty.
+$$
+Ссылка №3:
+$$
+a)\lim_{x\to-2}g(x)=1;
+$$
+$$
+b)\lim_{x\to1}g(x)=-1;
+$$
+$$
+c)\lim_{x\to3}g(x)=-1;
+$$
+$$
+d)\lim_{x\to4}g(x)=0;
+$$
+$$
+e)\lim_{x\to0}g(x)=3;
+$$
+$$
+Посчитать\lim_{x\to3}\frac{2x-6}{2-\left|1-x\right|}=\lim_{x\to3}\frac{2(x-3)}{2-\left|1-x\right|}=\frac{2(3-3)}{2-\left|1-3\right|}=\left[\frac{0}{0}\right]\xRightarrow{по~правилу~Лопиталя}\lim_{x\to3}\frac{2\left|x-1\right|}{x-1}=\frac{2\left|3-1\right|}{3-1}=\frac{-4}{2}=-2;
+$$
+$$
+Посчитать\lim_{y\to0}\frac{1-\cos{y}}{y}=\lim_{y\to0}\frac{1-\cos{y}}{y^2}\times y=\lim_{y\to0}\left(\frac{1}{2}\times y\right)=\frac{1}{2}\times0=0.
+$$

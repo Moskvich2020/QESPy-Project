@@ -1,0 +1,19 @@
+{
+    "set_theme": "system",
+    "theme": {
+        "light": {
+            "default": "black on white",
+            "info": "italic",
+            "error": "red",
+            "critical_error": "red bold"
+        },
+        "dark": {
+            "default": "white on black",
+            "info": "italic",
+            "error": "red",
+            "critical_error": "red bold"
+        }
+    },
+    "discriminant_item": "legasy",
+    "precision": 2
+}
