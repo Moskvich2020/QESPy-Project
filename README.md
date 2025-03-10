@@ -1,3 +1,10 @@
+
+<h1 align="center">ПРОЕКТ ЗАКТРЫТ</h1>
+<p align="center"><b>QESPy Project официально закрыт в связи с утратой перспектив развития.</b></p>
+<p align="center">Его место займёт новый, более универсальный проект платформы для управления и использования различных скриптов под кодовым названием "Platform Project" (окончательное название находится в процессе утверждения).</p>
+<p align="center">Репозиторий проекта QESPy заморожен и будет сохранён для архивных целей и в качестве воспоминания о его достижениях.</p>
+
+
 <img src="https://github.com/Moskvich2020/QESPy-Project/blob/Master/Images/PNG/QESPy%20Project%20-%20Light%20Banner%20+%20Gradient%20(effects%20off).png" alt="QESPy Project - Light Baner Gradient (Effects off)">
 
 <p align="center">
@@ -6,7 +13,6 @@
   <img src="https://img.shields.io/badge/Windows-blue?style=flat&logo=windows" alt="OS">
   <img src="https://img.shields.io/badge/%D0%9B%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F-MAF%20Original%20License-gren?style=flat" alt="License">
 </p>
-
 
 <h3 align="center">О ПРОЕКТЕ</h3>
 
