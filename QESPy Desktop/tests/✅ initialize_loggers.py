@@ -8,22 +8,28 @@ import logging
 # logging.error("An ERROR")
 # logging.critical("A message of CRITICAL severity")
 
+# Global variable:
+program_work_directory = os.path.dirname(os.path.abspath(__file__))
 
-def setup_loggers():
+
+def initialize_loggers():
     global event_logger, error_logger
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    logs_dir = os.path.join(program_work_directory, 'logs')
+
+    if not os.path.exists(logs_dir):
+        os.makedirs(logs_dir)
 
     event_logger = logging.getLogger('event_logger')
     event_logger.setLevel(logging.DEBUG)
-    event_handler = logging.FileHandler(os.path.join(script_dir, 'events.log'), encoding='utf-8')
+    event_handler = logging.FileHandler(os.path.join(logs_dir, 'events.log'), encoding='utf-8')
     event_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%d.%m.%Y %H:%M:%S')
     event_handler.setFormatter(event_formatter)
     event_logger.addHandler(event_handler)
 
     error_logger = logging.getLogger('error_logger')
     error_logger.setLevel(logging.ERROR)
-    error_handler = logging.FileHandler(os.path.join(script_dir, 'errors.log'), encoding='utf-8')
+    error_handler = logging.FileHandler(os.path.join(logs_dir, 'errors.log'), encoding='utf-8')
     error_formatter = logging.Formatter('%(asctime)s - %(levelname)s - (%(filename)s).%(funcName)s(%(lineno)d) - %(message)s', datefmt='%d.%m.%Y %H:%M:%S')
     error_handler.setFormatter(error_formatter)
     error_logger.addHandler(error_handler)
@@ -34,8 +40,8 @@ def main():
         try:
             event_logger.info('Программа запущена')
             while True:
-                command = input("Введите команду: ")
-                if command.lower() == 'exit':
+                command = input("Введите команду: ").lower()
+                if command == 'exit':
                     event_logger.info('Программа завершена')
                     quit()
                 elif command == 'error':
@@ -52,5 +58,5 @@ def main():
             error_logger.error('Произошла ошибка', exc_info=True)
 
 if __name__ == "__main__":
-    setup_loggers()
+    initialize_loggers()
     main()

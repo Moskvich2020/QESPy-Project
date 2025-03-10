@@ -1,0 +1,34 @@
+main
+
+initialize_loggers
+
+loader
+├─ environment_data_loading
+├─ settings_data_loading
+└─ modules_data_loading
+
+validator
+├─ environment_data_validation
+└─ settings_data_validation
+
+restorer
+├─ environment_data_restoring
+└─ settings_data_restoring
+
+main menu
+
+modules
+├─ output_modules
+└─ launch_modules
+
+settings
+├─ output_settings
+└─ changing_settings
+
+terminal
+
+about_program
+
+(action_type, operation, mode, category, task, context, option) - варианты для аргументов материнских функций.
+
+print(f'Текущие размеры окна (OS): {os.get_terminal_size()} - Текущие размеры окна (Rich): {console.size}')

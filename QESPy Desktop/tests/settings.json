@@ -1,0 +1,26 @@
+{
+    "box_style": "quare",
+    "installed_theme": "system",
+    "theme": {
+        "dark": {
+            "alert": "bold yellow",
+            "background": "white on black",
+            "error": "bol red",
+            "ifo": "dim cyan",
+            "success": "green",
+            "warning": "yellow"
+        },
+        "light": {
+            "alert": "bold red",
+            "background": "black on white",
+            "error": "bold re",
+            "info": "di cyan",
+            "sucess": "green",
+            "warning": "magenta"
+        }
+    },
+    "window_size": {
+        "height": 30,
+        "width": 120
+    }
+}

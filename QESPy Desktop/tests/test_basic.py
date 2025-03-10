@@ -1,3 +1,4 @@
+import json
 import os
 import sys
 import platform
@@ -71,3 +72,119 @@ import time
 # print('\033[2m 2 | \033[0m \033[34mprint\033[33m(\033[35mf\033[36m"\033[0m\\033\033[32m[\033[31mcode\033[32mm\033[35m{\033[37mstr\033[35m}\033[37m\\033\033[32m[0m\033[36m"\033[33m)\033[0m\033[2m # Где "code" заменяется на код из таблиц, а "\\033[0m" конец форматирования\033[0m')
 # print('\033[2m 3 | \033[0m \033[34mprint\033[33m(\033[35mf\033[36m"\033[0m\\033\033[32m[\033[31mcode_1\033[37m;\033[31mcode_2\033[37m;\033[31mcode_3\033[32mm\033[35m{\033[37mstr\033[35m}\033[37m\\033\033[32m[0m\033[36m"\033[33m)\033[0m\033[2m # Если надо применить к строке несколько стилей и/или цветов\033[0m')
 
+program_work_directory = os.path.dirname(os.path.abspath(__file__))
+json_path = os.path.join(program_work_directory, 'settings.json')
+
+global settings_data
+
+with open(json_path, 'r') as json_file:
+    settings_data = json.load(json_file)
+
+def settings_data_validation():
+    errors_key = []
+    errors_items = []
+
+    # Проверка наличия главных ключей в файле настроек
+    for key in ['box_style', 'installed_theme', 'theme', 'window_size']:
+        if key not in settings_data:
+            errors_key.append(key)
+            print(f'ОШИБКА: Не найден ключ в файле настроек!\nНе найденно следующих ключей: {errors_key}.')
+
+    # Проверка наличия вложенных ключей в файле настроек
+    if 'theme' not in errors_key:    
+        for key in ['dark', 'light']:
+            if key in settings_data['theme']:
+                for key_2 in ['alert', 'background', 'error', 'info', 'success', 'warning']:
+                    if key_2 not in settings_data['theme'][key]:
+                        errors_key.append(f'{key} -> {key_2}')
+                        print(f'ОШИБКА: Не найден ключ в файле настроек!\nНе найденно следующих ключей: {errors_key}.')
+            else:
+                errors_key.append(key)
+                print(f'ОШИБКА: Не найден ключ в файле настроек!\nНе найденно следующих ключей: {errors_key}.') 
+
+    if 'window_size' not in errors_key:
+        for key in ['height', 'width']:
+            if key not in settings_data['window_size']:
+                errors_key.append(key)
+                print(f'ОШИБКА: Не найден ключ в файле настроек!\nНе найденно следующих ключей: {errors_key}.')
+
+
+    # Проверка корректности значений ключей в файле настроек
+    if 'box_style' not in errors_key:
+        if settings_data['box_style'] not in [
+                'ascii',
+                'ascii2',
+                'ascii_double_head',
+                'double', 
+                'double_edge',
+                'heavy',
+                'heavy_edge',
+                'heavy_head',
+                'horizontals',
+                'markdown',
+                'minimal',
+                'minimal_double_head',
+                'minimal_heavy_head',
+                'rounded',
+                'simple',
+                'simple_head',
+                'simple_heavy',
+                'square',
+                'square_double_head'
+            ]:
+            errors_items.append('box_style')
+            print(f'ОШИБКА: Некорректное значение ключа в файле настроек!\nНекорректное значение ключа: {errors_items}.')
+
+    if 'installed_theme' not in errors_key:
+        if settings_data['installed_theme'] not in ['dark', 'light', 'system']:
+            errors_items.append('installed_theme')
+            print(f'ОШИБКА: Некорректное значение ключа в файле настроек!\nНекорректное значение ключа: {errors_items}.')
+# ! Не работает как надо. Надо сделать нормальную проверку наличия ключей перед проверкой значений из списка errors_key.
+# ! Или вообще разделить проверки ключей и значений, чтобы проверка значений была только тогда, когда все ключи найдены.
+    if 'theme' not in errors_key and 'dark' not in errors_key and 'light' not in errors_key:
+        for key in ['dark', 'light']:
+            for key_2 in ['alert', 'background', 'error', 'info', 'success', 'warning']:
+                if key_2 in settings_data['theme'][key]:
+                    if not set(settings_data['theme'][key][key_2].split()).issubset({
+                        'bold',
+                        'blink',
+                        'conceal',
+                        'italic',
+                        'reverse',
+                        'strike',
+                        'underline',
+                        'on',
+                        'dim',
+                        'black',
+                        'red',
+                        'green',
+                        'yellow',
+                        'blue',
+                        'magenta',
+                        'cyan',
+                        'white'
+                    }):
+                        errors_items.append(f'{key} -> {key_2}')
+                        print(f'ОШИБКА: Некорректное значение ключа в файле настроек!\nНекорректное значение ключа: {errors_items}.')
+    
+    if 'window_size' not in errors_key:
+        for key in ['height', 'width']:
+            if not isinstance(settings_data['window_size'][key], int) or settings_data['window_size'][key] < 30:
+                errors_items.append(key)
+                print(f'ОШИБКА: Некорректное значение ключа в файле настроек!\nНекорректное значение ключа: {errors_items}.')
+
+    if not errors_key and not errors_items:
+        print('ОТЧЁТ О ЗАВЕРШЕНИИ ПРОВЕРКИ: В настройках повреждений нет!')
+    else:
+        print('ОТЧЁТ О ЗАВЕРШЕНИИ ПРОВЕРКИ: В файле настроек обнаружены ошибки!\nВыполнить восстановление настроек по умолчанию? [Y/N]')
+        answer = input()
+        if answer.lower() == 'y':
+            settings_data_restore(errors_key, errors_items)
+        else:
+            print('ВНИМАНИЕ: Отмена восстановления настроек!')
+
+def settings_data_restore(errors_key, errors_items):
+    print('ВНИМАНИЕ: Восстановление настроек по умолчанию...')
+
+
+settings_data_validation()
